@@ -18,7 +18,7 @@ const TrustSection = () => {
           >
             <p>
               FlamTabX is being developed through material science research using
-              Cashew Nut Shell Liquid (CNSL), an abundant industrial byproduct.
+              Bio-Waste, an abundant industrial byproduct.
             </p>
 
             <p>
