@@ -8,7 +8,11 @@ const ClosingSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="min-h-[70vh] flex items-center justify-center py-24">
+    <section
+      ref={ref}
+      id="closing"
+      className="min-h-[70vh] flex items-center justify-center py-24"
+    >
       <div className="section-container">
         <div className="section-text-center">
           <motion.p
@@ -53,19 +57,18 @@ const ClosingSection = () => {
             transition={{ duration: 0.6, delay: 0.9 }}
             className="mt-16 space-y-4 text-base md:text-lg text-foreground"
           >
-            <p className="font-semibold text-lg md:text-xl">
-              ©️ 2026 FlamTabX
-            </p>
+            <p className="font-semibold text-lg md:text-xl">©️ 2026 FlamTabX</p>
             <p className="font-medium">
               A Bio-based flame-retardant coating project
             </p>
             <p className="text-sm md:text-base">
-              Founded by Aditya Ratnaparkhi | Chemical Engineer (ICT Mumbai) | beVisioneers Fellow '25
+              Founded by Aditya Ratnaparkhi | Chemical Engineer (ICT Mumbai) |
+              beVisioneers Fellow '25
             </p>
             <p className="text-sm md:text-base italic">
               Early-stage venture in development
             </p>
-            
+
             {/* Social Icons */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
