@@ -9,6 +9,7 @@ import {
   Shield,
   Droplets,
   X,
+  Flame,
 } from "lucide-react";
 import Navbar from "@/components/sections/Navbar";
 
@@ -172,6 +173,12 @@ const SolutionSection: React.FC = () => {
       title: "Climate Adaptive Behavior",
       description: "Performance optimized for diverse environmental conditions",
     },
+    {
+      icon: <Flame className="w-8 h-8" />,
+      title: "Fire Retardant Layer",
+      description:
+        "Integrated flame-resistant compounds for enhanced building safety",
+    },
   ];
 
   return (
@@ -186,7 +193,7 @@ const SolutionSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <AnimatedSection key={index} delay={0.1 * (index + 1)}>
-              <div className="p-8 rounded-lg bg-white border border-[hsl(30,10%,85%)] hover:border-[hsl(20,70%,45%)] transition-colors duration-300">
+              <div className="h-full p-8 rounded-lg bg-white border border-[hsl(30,10%,85%)] hover:border-[hsl(20,70%,45%)] transition-colors duration-300">
                 <div className="w-12 h-12 rounded-lg bg-[hsl(20,70%,45%)] text-white flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
@@ -436,7 +443,7 @@ const ImpactSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {impacts.map((impact, index) => (
             <AnimatedSection key={index} delay={0.15 * (index + 1)}>
-              <div className="p-8 rounded-lg bg-gradient-to-br from-[hsl(25,70%,50%)] to-[hsl(20,70%,45%)] text-white text-center">
+              <div className="h-full p-8 rounded-lg bg-gradient-to-br from-[hsl(25,70%,50%)] to-[hsl(20,70%,45%)] text-white text-center">
                 <p className="text-4xl md:text-5xl font-bold mb-4">
                   {impact.metric}
                 </p>
@@ -507,7 +514,7 @@ const BusinessModelSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {models.map((model, index) => (
             <AnimatedSection key={index} delay={0.1 * (index + 1)}>
-              <div className="p-8 rounded-lg border border-[hsl(220,12%,25%)] hover:bg-[hsl(220,12%,20%)] transition-colors duration-300">
+              <div className="h-full p-8 rounded-lg border border-[hsl(220,12%,25%)] hover:bg-[hsl(220,12%,20%)] transition-colors duration-300">
                 <h3 className="text-xl font-semibold mb-3 text-[hsl(25,70%,50%)]">
                   {model.title}
                 </h3>
@@ -540,13 +547,6 @@ const VisionSection: React.FC = () => {
             thermal management—combining climate science, sustainable materials,
             and scalable economics.
           </p>
-        </AnimatedSection>
-
-        <AnimatedSection delay={0.4}>
-          <button className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-white text-[hsl(20,70%,45%)] font-semibold hover:bg-[hsl(30,10%,97%)] transition-colors duration-300 group">
-            Request Pilot Collaboration
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
         </AnimatedSection>
       </div>
     </section>
