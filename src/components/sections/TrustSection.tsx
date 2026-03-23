@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const TrustSection = () => {
   const ref = useRef(null);
@@ -28,6 +29,26 @@ const TrustSection = () => {
 
             <p>
               Pilot testing with workshops and small industrial units is underway.
+            </p>
+
+            <p>
+              For geography-specific <strong className="text-foreground">passive cooling savings</strong>{" "}
+              (kWh and CO₂ avoided), we publish a transparent lookup-based{" "}
+              <Link
+                to="/tools/energy-savings"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                PDRC-style energy calculator
+              </Link>{" "}
+              aligned with the methodology described alongside our research pipeline.
+              The full venture narrative lives in the{" "}
+              <Link
+                to="/blog/flamtabx"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                long-form pitch
+              </Link>
+              .
             </p>
           </motion.div>
 

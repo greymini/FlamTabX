@@ -7,7 +7,10 @@ const QuestionSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="min-h-[60vh] flex items-center justify-center py-24 section-cream">
+    <section
+      ref={ref}
+      className="section-cream flex min-h-[60vh] items-center justify-center py-24"
+    >
       <div className="section-container">
         <div className="section-text-center">
           <motion.p
@@ -16,18 +19,22 @@ const QuestionSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-question mb-12"
           >
-            Why do we accept that losing everything is normal
-            <br className="hidden md:block" /> once a fire starts?
+            Why should families and workers accept indoor heat, damp walls,
+            <br className="hidden md:block" />
+            and grid-dependent cooling as the only options?
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="text-body max-w-xl mx-auto space-y-4"
+            className="text-body mx-auto max-w-xl space-y-4"
           >
-            <p>Homes don't fail because they are weak.</p>
-            <p>They fail because nothing slows the fire down.</p>
+            <p>Most buildings still behave like heat sponges.</p>
+            <p>
+              The gap is not a lack of care — it is a lack of affordable,
+              passive material systems that work together.
+            </p>
           </motion.div>
         </div>
       </div>

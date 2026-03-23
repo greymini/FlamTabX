@@ -7,16 +7,16 @@ const ShiftSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="min-h-[70vh] flex items-center py-24">
+    <section ref={ref} className="flex min-h-[70vh] items-center py-24">
       <div className="section-container">
         <div className="max-w-2xl">
           <motion.h2
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl md:text-4xl font-semibold mb-8 text-foreground"
+            className="mb-8 text-3xl font-semibold text-foreground md:text-4xl"
           >
-            Firefighting starts too late.
+            Comfort and safety have to start at the surface.
           </motion.h2>
 
           <motion.div
@@ -26,13 +26,15 @@ const ShiftSection = () => {
             className="text-body space-y-6"
           >
             <p>
-              Most fire safety systems react after ignition.
+              Air conditioning fights symptoms after heat is already inside.
               <br />
-              But modern fires spread faster than response systems can act.
+              Coatings that reflect heat, buffer peaks, and breathe with the
+              monsoon address the envelope itself.
             </p>
 
-            <p className="text-lg md:text-xl font-medium text-foreground">
-              What if materials themselves could resist fire?
+            <p className="text-lg font-medium text-foreground md:text-xl">
+              What if the paint layer did real thermal and moisture work — and
+              still supported flame-retardant performance where it matters?
             </p>
           </motion.div>
         </div>

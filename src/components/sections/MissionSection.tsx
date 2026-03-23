@@ -16,9 +16,9 @@ const MissionSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed mb-8 text-[hsl(30,20%,92%)]"
           >
-            Fire safety should not be added later.
+            Thermal comfort and surface safety should not be bolted on later.
             <br />
-            It should be built into the material.
+            They should be designed into the coating system.
           </motion.p>
 
           <motion.p
@@ -27,9 +27,9 @@ const MissionSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-body-dark max-w-2xl mx-auto"
           >
-            FlamTabX exists to reduce loss, buy time,
+            FlamTabX exists to cut heat and moisture risk at the envelope,
             <br className="hidden md:block" />
-            and make everyday structures resilient.
+            and to make everyday structures more livable and resilient.
           </motion.p>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import QuestionSection from "@/components/sections/QuestionSection";
@@ -12,6 +14,19 @@ import MissionSection from "@/components/sections/MissionSection";
 import ClosingSection from "@/components/sections/ClosingSection";
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const id = location.hash.replace(/^#/, "");
+    if (!id) return;
+    const scroll = () => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    };
+    requestAnimationFrame(scroll);
+    const timeout = window.setTimeout(scroll, 150);
+    return () => clearTimeout(timeout);
+  }, [location.hash, location.pathname]);
+
   return (
     <>
       <Navbar />

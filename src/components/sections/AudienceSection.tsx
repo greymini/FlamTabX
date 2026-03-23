@@ -4,12 +4,12 @@ import { useRef } from "react";
 import workshopImage from "@/assets/workshop-environment.jpg";
 
 const useCases = [
-  "Workshops & MSMEs",
-  "Warehouses",
-  "Low-rise buildings",
-  "Fire-prone regions",
-  "Retrofitted structures",
-  "Industrial storage",
+  "Independent houses & low-rise housing",
+  "Workshops & MSMEs in heat-stressed corridors",
+  "Warehouses & logistics roofs",
+  "Hot-humid monsoon belts",
+  "Retrofits where insulation is impractical",
+  "Industrial sheds needing cooler work floors",
 ];
 
 const AudienceSection = () => {

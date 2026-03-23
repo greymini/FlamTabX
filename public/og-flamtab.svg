@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="FlamTabX">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1f2e"/>
+      <stop offset="100%" style="stop-color:#2d1810"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c2410c"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="80" y="220" width="8" height="200" rx="2" fill="url(#accent)"/>
+  <text x="110" y="320" fill="#faf8f5" font-family="Georgia, serif" font-size="72" font-weight="600">FlamTabX</text>
+  <text x="110" y="390" fill="#a8a29e" font-family="system-ui, sans-serif" font-size="28">Climate-adaptive bio-based coatings</text>
+</svg>

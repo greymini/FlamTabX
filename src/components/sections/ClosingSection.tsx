@@ -11,7 +11,7 @@ const ClosingSection = () => {
     <section
       ref={ref}
       id="closing"
-      className="min-h-[70vh] flex items-center justify-center py-24"
+      className="min-h-[70vh] flex items-center justify-center py-24 scroll-mt-20"
     >
       <div className="section-container">
         <div className="section-text-center">
@@ -21,7 +21,7 @@ const ClosingSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-2xl md:text-3xl font-medium mb-4 text-foreground"
           >
-            When fire strikes, minutes matter.
+            When heat seasons lengthen, comfort is not optional.
           </motion.p>
 
           <motion.p
@@ -30,7 +30,8 @@ const ClosingSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground mb-16"
           >
-            FlamTabX is designed to give them back.
+            FlamTabX is designed to give hours of safer, cooler, drier living
+            back — before the next crisis.
           </motion.p>
 
           <motion.div

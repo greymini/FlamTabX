@@ -1,7 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -10,28 +11,35 @@ const navItems = [
   { name: "Contact", path: "#closing", isHash: true },
 ] as const;
 
-const handleHashScroll = (path: string) => {
-  if (path.startsWith("#")) {
-    const element = document.getElementById(path.slice(1));
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  }
+const scrollToId = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 };
 
 export default function Navbar(): JSX.Element {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("/");
 
+  const goToHomeHash = useCallback(
+    (hashPath: string) => {
+      const id = hashPath.startsWith("#") ? hashPath.slice(1) : hashPath;
+      if (location.pathname !== "/") {
+        navigate({ pathname: "/", hash: id });
+      } else {
+        scrollToId(id);
+      }
+    },
+    [location.pathname, navigate]
+  );
+
   useEffect(() => {
     const handleScroll = () => {
-      // Check if we're on a route page (not homepage)
       if (window.location.pathname !== "/") {
         setActiveSection(window.location.pathname);
         return;
       }
 
-      // For hash-based sections, detect which is in view
       const sections = ["products", "closing"];
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -48,9 +56,8 @@ export default function Navbar(): JSX.Element {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("hashchange", handleScroll);
-    // Also listen for navigation events
     window.addEventListener("popstate", handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -59,32 +66,24 @@ export default function Navbar(): JSX.Element {
     };
   }, []);
 
+  const linkClass = (active: boolean) =>
+    cn(
+      "text-sm font-medium transition-colors",
+      active ? "text-primary" : "text-foreground hover:text-primary"
+    );
+
   return (
-    <header
-      className="w-full border-b sticky top-0 z-50"
-      style={{
-        backgroundColor: "hsl(30 10% 97%)",
-        borderColor: "hsl(30 10% 85%)",
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           to="/"
-          className="font-bold tracking-tight text-lg transition-colors hover:opacity-80"
-          style={{ color: "hsl(20 70% 45%)" }}
+          className="flex items-center gap-2 text-lg font-bold tracking-tight text-primary transition-opacity hover:opacity-85"
         >
-          <span className="flex items-center gap-2">
-            <div
-              className="w-2 h-6 rounded-sm"
-              style={{ backgroundColor: "hsl(20 70% 45%)" }}
-            />
-            FlamTabX
-          </span>
+          <span className="h-6 w-2 rounded-sm bg-primary" aria-hidden />
+          FlamTabX
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
             const isActive = activeSection === item.path;
             if ("isHash" in item && item.isHash) {
@@ -94,20 +93,9 @@ export default function Navbar(): JSX.Element {
                   href={item.path}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleHashScroll(item.path);
+                    goToHomeHash(item.path);
                   }}
-                  className="text-sm font-medium transition-colors"
-                  style={{
-                    color: isActive ? "hsl(20 70% 45%)" : "hsl(220 15% 15%)",
-                  }}
-                  onMouseEnter={(e) =>
-                    !isActive &&
-                    (e.currentTarget.style.color = "hsl(20 70% 45%)")
-                  }
-                  onMouseLeave={(e) =>
-                    !isActive &&
-                    (e.currentTarget.style.color = "hsl(220 15% 15%)")
-                  }
+                  className={linkClass(isActive)}
                 >
                   {item.name}
                 </a>
@@ -117,17 +105,7 @@ export default function Navbar(): JSX.Element {
               <NavLink
                 key={item.name}
                 to={item.path}
-                className="text-sm font-medium transition-colors"
-                style={{
-                  color: isActive ? "hsl(20 70% 45%)" : "hsl(220 15% 15%)",
-                }}
-                onMouseEnter={(e) =>
-                  !isActive && (e.currentTarget.style.color = "hsl(20 70% 45%)")
-                }
-                onMouseLeave={(e) =>
-                  !isActive &&
-                  (e.currentTarget.style.color = "hsl(220 15% 15%)")
-                }
+                className={({ isActive: na }) => linkClass(na || isActive)}
               >
                 {item.name}
               </NavLink>
@@ -135,18 +113,15 @@ export default function Navbar(): JSX.Element {
           })}
         </nav>
 
-        {/* Mobile Button */}
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="md:hidden transition-colors"
+          className="text-foreground transition-colors hover:text-primary md:hidden"
           aria-label="Toggle Menu"
-          style={{ color: "hsl(220 15% 15%)" }}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -154,13 +129,9 @@ export default function Navbar(): JSX.Element {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden border-t"
-            style={{
-              backgroundColor: "hsl(30 10% 97%)",
-              borderColor: "hsl(30 10% 85%)",
-            }}
+            className="border-t border-border bg-background md:hidden"
           >
-            <div className="flex flex-col px-6 py-4 space-y-4">
+            <div className="flex flex-col space-y-4 px-6 py-4">
               {navItems.map((item) => {
                 const isActive = activeSection === item.path;
                 if ("isHash" in item && item.isHash) {
@@ -170,15 +141,10 @@ export default function Navbar(): JSX.Element {
                       href={item.path}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleHashScroll(item.path);
+                        goToHomeHash(item.path);
                         setIsOpen(false);
                       }}
-                      className="text-sm font-medium transition-colors"
-                      style={{
-                        color: isActive
-                          ? "hsl(20 70% 45%)"
-                          : "hsl(220 15% 15%)",
-                      }}
+                      className={linkClass(isActive)}
                     >
                       {item.name}
                     </a>
@@ -189,10 +155,7 @@ export default function Navbar(): JSX.Element {
                     key={item.name}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className="text-sm font-medium transition-colors"
-                    style={{
-                      color: isActive ? "hsl(20 70% 45%)" : "hsl(220 15% 15%)",
-                    }}
+                    className={({ isActive: na }) => linkClass(na || isActive)}
                   >
                     {item.name}
                   </NavLink>

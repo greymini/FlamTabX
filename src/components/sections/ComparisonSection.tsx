@@ -2,8 +2,18 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const existingItems = ["Reactive", "Expensive", "Complex", "Hard to retrofit"];
-const flamtabxItems = ["Prevention-first", "Affordable", "Passive", "Designed for real environments"];
+const existingItems = [
+  "Single-function (cool roof OR waterproofing OR biocide)",
+  "AC-first comfort — high bills and grid load",
+  "Insulation retrofits costly for informal housing",
+  "Fragmented vendors, unclear combined performance",
+];
+const flamtabxItems = [
+  "One envelope layer: thermal + moisture + safer surface",
+  "Passive first — less cooling load before you add machines",
+  "Paint-process friendly for retrofit at scale",
+  "Built for real heat, humidity, and workshop realities",
+];
 
 const ComparisonSection = () => {
   const ref = useRef(null);
