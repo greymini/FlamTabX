@@ -2,8 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { lazy, Suspense, useLayoutEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import FlamTabXBlog from "./pages/FlamTabX";
 import NotFound from "./pages/NotFound";
@@ -17,12 +17,24 @@ const PdrcEngineeringBlog = lazy(() => import("./pages/PdrcEngineeringBlog"));
 
 const queryClient = new QueryClient();
 
+/** Reset scroll when the route path changes (e.g. blog → blog) without breaking in-page #anchors. */
+function ScrollToTopOnNavigate() {
+  const { pathname } = useLocation();
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [pathname]);
+  return null;
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTopOnNavigate />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/blog/flamtabx" element={<FlamTabXBlog />} />
