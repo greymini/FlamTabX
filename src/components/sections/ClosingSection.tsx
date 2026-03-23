@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { Mail, Linkedin } from "lucide-react";
 
 const ClosingSection = () => {
@@ -11,7 +12,7 @@ const ClosingSection = () => {
     <section
       ref={ref}
       id="closing"
-      className="min-h-[70vh] flex items-center justify-center py-24"
+      className="min-h-[70vh] flex items-center justify-center py-24 scroll-mt-20"
     >
       <div className="section-container">
         <div className="section-text-center">
@@ -21,7 +22,7 @@ const ClosingSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-2xl md:text-3xl font-medium mb-4 text-foreground"
           >
-            When fire strikes, minutes matter.
+            When heat seasons lengthen, comfort is not optional.
           </motion.p>
 
           <motion.p
@@ -30,7 +31,8 @@ const ClosingSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground mb-16"
           >
-            FlamTabX is designed to give them back.
+            FlamTabX is designed to give hours of safer, cooler, drier living
+            back — before the next crisis.
           </motion.p>
 
           <motion.div
@@ -49,6 +51,26 @@ const ClosingSection = () => {
           >
             Currently in pilot development.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.75 }}
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+          >
+            <Link
+              to="/tools/energy-savings"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
+            >
+              Try energy calculator
+            </Link>
+            <Link
+              to="/blog/flamtabx"
+              className="inline-flex items-center justify-center rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              Read venture story
+            </Link>
+          </motion.div>
 
           {/* Footer Information */}
           <motion.div

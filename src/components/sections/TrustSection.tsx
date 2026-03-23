@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const TrustSection = () => {
   const ref = useRef(null);
@@ -28,6 +29,42 @@ const TrustSection = () => {
 
             <p>
               Pilot testing with workshops and small industrial units is underway.
+            </p>
+
+            <p>
+              For geography-specific{" "}
+              <strong className="text-foreground">passive cooling savings</strong> (kWh and
+              CO₂ avoided), we publish a transparent lookup-based{" "}
+              <Link
+                to="/tools/energy-savings"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                PDRC-style energy calculator
+              </Link>
+              . How it is built—data sources, lookup design, and limits—is summarized in the{" "}
+              <Link
+                to="/blog/energy-calculator"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                calculator methodology article
+              </Link>
+              . For{" "}
+              <strong className="text-foreground">equations and the full formula chain</strong>
+              , see the{" "}
+              <Link
+                to="/blog/pdrc-engineering"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                engineering deep dive
+              </Link>
+              . The venture narrative lives in the{" "}
+              <Link
+                to="/blog/flamtabx"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                FlamTabX story
+              </Link>
+              .
             </p>
           </motion.div>
 

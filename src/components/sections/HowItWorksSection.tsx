@@ -5,16 +5,19 @@ import coatingImage from "@/assets/coating-closeup.jpg";
 
 const steps = [
   {
-    title: "Applied Like a Coating",
-    description: "Works on wood, panels, partitions, exposed surfaces.",
+    title: "Applied like paint",
+    description:
+      "Roll or spray on roofs and walls — compatible with common substrates used in homes and MSME sheds.",
   },
   {
-    title: "Reacts to Heat",
-    description: "Forms a protective barrier when exposed to fire.",
+    title: "Buffers heat and moisture",
+    description:
+      "Reflective and phase-change elements cut peak loads; the matrix breathes to reduce damp and microbial stress.",
   },
   {
-    title: "Buys Time",
-    description: "Delays ignition and slows flame spread automatically.",
+    title: "Engineered for safer surfaces",
+    description:
+      "Flame-retardant design targets slower spread and more predictable char — buying time when exposure occurs.",
   },
 ];
 
@@ -35,7 +38,7 @@ const HowItWorksSection = () => {
           >
             <img
               src={coatingImage}
-              alt="Fire-resistant coating forming protective char layer on wood"
+              alt="Close-up of FlamTabX coating texture on a substrate"
               className="w-full h-auto"
             />
           </motion.div>

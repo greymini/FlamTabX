@@ -3,11 +3,11 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const problems = [
-  "Fires spread faster than ever",
-  "Common materials ignite instantly",
-  "Structural failure happens in minutes",
-  "Retrofitting fire systems is expensive or impossible",
-  "Small workshops and buildings are left unprotected",
+  "Indoor heat regularly exceeds safe comfort bands where AC is scarce",
+  "Humidity drives damp walls, mold, and poor air quality in monsoon seasons",
+  "Grid-powered cooling is costly, uneven, and adds carbon where grids are dirty",
+  "Fragmented paints solve only reflectivity, waterproofing, or biocides — not all three",
+  "When fire does reach exposed materials, many substrates still offer little resistance",
 ];
 
 const ProblemSection = () => {
@@ -48,10 +48,11 @@ const ProblemSection = () => {
             className="text-center"
           >
             <p className="text-xl md:text-2xl text-subheadline-dark">
-              The real gap isn't firefighting.
+              The real gap isn't one more box product.
             </p>
-            <p className="text-xl md:text-2xl font-medium text-[hsl(30,20%,92%)]">
-              It's material-level fire resilience.
+            <p className="font-display text-xl font-medium text-[hsl(var(--section-dark-foreground))] md:text-2xl">
+              It's an affordable, passive envelope layer — thermal, moisture, and
+              safer materials together.
             </p>
           </motion.div>
         </div>
