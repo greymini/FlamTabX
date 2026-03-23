@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { Mail, Linkedin } from "lucide-react";
 
 const ClosingSection = () => {
@@ -50,6 +51,26 @@ const ClosingSection = () => {
           >
             Currently in pilot development.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.75 }}
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+          >
+            <Link
+              to="/tools/energy-savings"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
+            >
+              Try energy calculator
+            </Link>
+            <Link
+              to="/blog/flamtabx"
+              className="inline-flex items-center justify-center rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              Read venture story
+            </Link>
+          </motion.div>
 
           {/* Footer Information */}
           <motion.div

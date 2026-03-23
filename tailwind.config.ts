@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["IBM Plex Sans", "system-ui", "sans-serif"],
+        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
         display: ["Source Serif 4", "Georgia", "serif"],
       },
       colors: {
@@ -61,6 +61,10 @@ export default {
         },
         ash: "hsl(var(--ash))",
         smoke: "hsl(var(--smoke))",
+        energy: "hsl(var(--energy))",
+        climate: "hsl(var(--climate))",
+        impact: "hsl(var(--impact))",
+        highlight: "hsl(var(--highlight-warm))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap');
 
 @tailwind base;
@@ -7,81 +7,81 @@
 
 @layer base {
   :root {
-    /* FlamTabX Design System - Calm, Serious, Trustworthy */
-    --background: 30 10% 97%;
-    --foreground: 220 15% 15%;
+    /* Climate / energy — cool neutrals, teal primary, emerald impact */
+    --background: 210 30% 98%;
+    --foreground: 222 47% 11%;
 
-    --card: 30 8% 95%;
-    --card-foreground: 220 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 30 10% 97%;
-    --popover-foreground: 220 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Warm ember accent - subtle fire reference */
-    --primary: 20 70% 45%;
-    --primary-foreground: 30 10% 97%;
+    --primary: 187 72% 32%;
+    --primary-foreground: 180 20% 99%;
 
-    /* Muted earth tones */
-    --secondary: 30 8% 92%;
-    --secondary-foreground: 220 15% 20%;
+    --secondary: 210 22% 94%;
+    --secondary-foreground: 222 40% 18%;
 
-    --muted: 30 6% 88%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 210 18% 93%;
+    --muted-foreground: 220 9% 40%;
 
-    /* Warm accent for highlights */
-    --accent: 25 60% 50%;
-    --accent-foreground: 30 10% 97%;
+    --accent: 172 48% 38%;
+    --accent-foreground: 180 20% 99%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 30 10% 97%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 10% 85%;
-    --input: 30 10% 85%;
-    --ring: 20 70% 45%;
+    --border: 214 24% 88%;
+    --input: 214 24% 88%;
+    --ring: 187 72% 38%;
 
     --radius: 0.5rem;
 
-    /* Custom FlamTabX tokens */
-    --charcoal: 220 15% 15%;
-    --charcoal-light: 220 12% 25%;
-    --off-white: 30 10% 97%;
-    --cream: 35 15% 94%;
-    --ember: 20 70% 45%;
-    --ember-glow: 15 80% 55%;
-    --ash: 220 8% 40%;
-    --smoke: 220 6% 60%;
+    --energy: 199 88% 45%;
+    --climate: 172 50% 36%;
+    --impact: 158 58% 38%;
+    --highlight-warm: 32 92% 48%;
 
-    /* Section backgrounds */
-    --section-dark: 220 15% 12%;
-    --section-dark-foreground: 30 20% 92%;
-    --section-light: 30 10% 97%;
-    --section-cream: 35 15% 94%;
+    --charcoal: 222 47% 11%;
+    --charcoal-light: 217 19% 27%;
+    --ash: 220 9% 42%;
+    --smoke: 215 14% 52%;
 
-    /* Typography */
-    --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --section-dark: 222 42% 12%;
+    --section-dark-foreground: 210 36% 96%;
+    --section-light: 210 30% 98%;
+    --section-cream: 210 28% 96%;
+
+    --ember: 187 72% 32%;
+    --ember-glow: 187 65% 42%;
+
+    --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-display: "Source Serif 4", Georgia, serif;
   }
 
   .dark {
-    --background: 220 15% 8%;
-    --foreground: 30 20% 92%;
-    --card: 220 15% 12%;
-    --card-foreground: 30 20% 92%;
-    --popover: 220 15% 12%;
-    --popover-foreground: 30 20% 92%;
-    --primary: 25 70% 50%;
-    --primary-foreground: 220 15% 10%;
-    --secondary: 220 12% 18%;
-    --secondary-foreground: 30 15% 90%;
-    --muted: 220 12% 20%;
-    --muted-foreground: 220 8% 60%;
-    --accent: 25 65% 55%;
-    --accent-foreground: 220 15% 10%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 30 10% 97%;
-    --border: 220 12% 20%;
-    --input: 220 12% 20%;
-    --ring: 25 70% 50%;
+    --background: 222 42% 8%;
+    --foreground: 210 36% 96%;
+    --card: 222 38% 11%;
+    --card-foreground: 210 36% 96%;
+    --popover: 222 38% 11%;
+    --popover-foreground: 210 36% 96%;
+    --primary: 187 65% 48%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 22% 16%;
+    --secondary-foreground: 210 30% 92%;
+    --muted: 217 18% 18%;
+    --muted-foreground: 215 14% 62%;
+    --accent: 172 45% 42%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 62% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 20% 20%;
+    --input: 217 20% 20%;
+    --ring: 187 65% 48%;
   }
+
 }
 
 @layer base {
@@ -104,7 +104,6 @@
 }
 
 @layer components {
-  /* Section base styles */
   .section-container {
     @apply w-full px-6 md:px-12 lg:px-20;
   }
@@ -117,25 +116,22 @@
     @apply text-center max-w-3xl mx-auto;
   }
 
-  /* Dark section variant */
   .section-dark {
     background-color: hsl(var(--section-dark));
     color: hsl(var(--section-dark-foreground));
   }
 
-  /* Light cream section */
   .section-cream {
     background-color: hsl(var(--section-cream));
   }
 
-  /* Typography utilities */
   .text-headline {
-    @apply text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-display font-semibold leading-tight;
     color: hsl(var(--foreground));
   }
 
   .text-headline-dark {
-    @apply text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-display font-semibold leading-tight;
     color: hsl(var(--section-dark-foreground));
   }
 
@@ -146,7 +142,7 @@
 
   .text-subheadline-dark {
     @apply text-xl md:text-2xl font-light leading-relaxed;
-    color: hsl(220 8% 70%);
+    color: hsl(var(--section-dark-foreground) / 0.82);
   }
 
   .text-body {
@@ -156,7 +152,7 @@
 
   .text-body-dark {
     @apply text-lg md:text-xl leading-relaxed;
-    color: hsl(220 8% 65%);
+    color: hsl(var(--section-dark-foreground) / 0.78);
   }
 
   .text-caption {
@@ -169,19 +165,16 @@
     color: hsl(var(--smoke));
   }
 
-  /* Brand name styling */
   .brand-name {
-    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
+    @apply font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
     color: hsl(var(--foreground));
   }
 
-  /* Question/quote styling */
   .text-question {
-    @apply text-2xl md:text-3xl lg:text-4xl font-medium leading-snug;
+    @apply font-display text-2xl md:text-3xl lg:text-4xl font-medium leading-snug;
     color: hsl(var(--foreground));
   }
 
-  /* Divider line */
   .divider-line {
     @apply w-24 h-px mx-auto my-12;
     background-color: hsl(var(--border));
@@ -189,10 +182,9 @@
 
   .divider-line-dark {
     @apply w-24 h-px mx-auto my-12;
-    background-color: hsl(220 12% 25%);
+    background-color: hsl(var(--section-dark-foreground) / 0.22);
   }
 
-  /* Feature cards */
   .feature-card {
     @apply p-8 md:p-10 rounded-lg;
     background-color: hsl(var(--card));
@@ -209,7 +201,6 @@
     color: hsl(var(--smoke));
   }
 
-  /* Comparison styles */
   .comparison-column {
     @apply space-y-4;
   }
@@ -229,7 +220,6 @@
     color: hsl(var(--foreground));
   }
 
-  /* Use case grid */
   .usecase-grid {
     @apply grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6;
   }
@@ -245,7 +235,6 @@
     color: hsl(var(--foreground));
   }
 
-  /* Bullet points */
   .bullet-list {
     @apply space-y-4;
   }
@@ -257,18 +246,40 @@
 
   .bullet-dot {
     @apply w-2 h-2 rounded-full mt-3 flex-shrink-0;
-    background-color: hsl(var(--ember));
+    background-color: hsl(var(--primary));
   }
 
-  /* Long-form blog (ReactMarkdown) */
   .prose-blog h1 + p,
   .prose-blog h2 + p {
     @apply mt-4;
   }
+
+  .blog-reading-progress {
+    @apply fixed left-0 top-0 z-[60] h-0.5 w-full origin-left bg-primary transition-transform duration-150 ease-out;
+    transform: scaleX(var(--read-progress, 0));
+  }
+
+  .blog-callout p {
+    @apply mt-0 first:mt-0;
+  }
+
+  .blog-callout p + p {
+    @apply mt-3;
+  }
+
+  .prose-blog .katex-display {
+    margin: 1rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.35rem 0;
+  }
+
+  .prose-blog .katex {
+    font-size: 1.06em;
+  }
 }
 
 @layer utilities {
-  /* Fade up animation */
   .animate-fade-up {
     animation: fadeUp 0.8s ease-out forwards;
     opacity: 0;
@@ -289,13 +300,11 @@
     opacity: 0;
   }
 
-  /* Slide in from left */
   .animate-slide-left {
     animation: slideLeft 0.8s ease-out forwards;
     opacity: 0;
   }
 
-  /* Stagger children */
   .stagger-children > * {
     opacity: 0;
     animation: fadeUp 0.6s ease-out forwards;

@@ -14,7 +14,7 @@ const MissionSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed mb-8 text-[hsl(30,20%,92%)]"
+            className="font-display text-2xl font-medium leading-relaxed text-[hsl(var(--section-dark-foreground))] mb-8 md:text-3xl lg:text-4xl"
           >
             Thermal comfort and surface safety should not be bolted on later.
             <br />

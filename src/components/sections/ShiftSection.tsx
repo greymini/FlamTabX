@@ -14,7 +14,7 @@ const ShiftSection = () => {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8 text-3xl font-semibold text-foreground md:text-4xl"
+            className="mb-8 font-display text-3xl font-semibold text-foreground md:text-4xl"
           >
             Comfort and safety have to start at the surface.
           </motion.h2>

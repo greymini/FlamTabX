@@ -32,21 +32,37 @@ const TrustSection = () => {
             </p>
 
             <p>
-              For geography-specific <strong className="text-foreground">passive cooling savings</strong>{" "}
-              (kWh and CO₂ avoided), we publish a transparent lookup-based{" "}
+              For geography-specific{" "}
+              <strong className="text-foreground">passive cooling savings</strong> (kWh and
+              CO₂ avoided), we publish a transparent lookup-based{" "}
               <Link
                 to="/tools/energy-savings"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
                 PDRC-style energy calculator
-              </Link>{" "}
-              aligned with the methodology described alongside our research pipeline.
-              The full venture narrative lives in the{" "}
+              </Link>
+              . How it is built—data sources, lookup design, and limits—is summarized in the{" "}
+              <Link
+                to="/blog/energy-calculator"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                calculator methodology article
+              </Link>
+              . For{" "}
+              <strong className="text-foreground">equations and the full formula chain</strong>
+              , see the{" "}
+              <Link
+                to="/blog/pdrc-engineering"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                engineering deep dive
+              </Link>
+              . The venture narrative lives in the{" "}
               <Link
                 to="/blog/flamtabx"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
-                long-form pitch
+                FlamTabX story
               </Link>
               .
             </p>

@@ -9,6 +9,11 @@ import FlamTabXBlog from "./pages/FlamTabX";
 import NotFound from "./pages/NotFound";
 
 const EnergySavingsPage = lazy(() => import("./pages/EnergySavingsPage"));
+const EnergyCalculatorResearch = lazy(() =>
+  import("./pages/EnergyCalculatorResearch")
+);
+const BlogIndex = lazy(() => import("./pages/BlogIndex"));
+const PdrcEngineeringBlog = lazy(() => import("./pages/PdrcEngineeringBlog"));
 
 const queryClient = new QueryClient();
 
@@ -21,6 +26,48 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/blog/flamtabx" element={<FlamTabXBlog />} />
+          <Route
+            path="/blog"
+            element={
+              <Suspense
+                fallback={
+                  <div className="flex min-h-screen items-center justify-center bg-background text-muted-foreground">
+                    Loading…
+                  </div>
+                }
+              >
+                <BlogIndex />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/blog/pdrc-engineering"
+            element={
+              <Suspense
+                fallback={
+                  <div className="flex min-h-screen items-center justify-center bg-background text-muted-foreground">
+                    Loading…
+                  </div>
+                }
+              >
+                <PdrcEngineeringBlog />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/blog/energy-calculator"
+            element={
+              <Suspense
+                fallback={
+                  <div className="flex min-h-screen items-center justify-center bg-background text-muted-foreground">
+                    Loading…
+                  </div>
+                }
+              >
+                <EnergyCalculatorResearch />
+              </Suspense>
+            }
+          />
           <Route
             path="/tools/energy-savings"
             element={

@@ -50,7 +50,7 @@ const ProblemSection = () => {
             <p className="text-xl md:text-2xl text-subheadline-dark">
               The real gap isn't one more box product.
             </p>
-            <p className="text-xl md:text-2xl font-medium text-[hsl(30,20%,92%)]">
+            <p className="font-display text-xl font-medium text-[hsl(var(--section-dark-foreground))] md:text-2xl">
               It's an affordable, passive envelope layer — thermal, moisture, and
               safer materials together.
             </p>

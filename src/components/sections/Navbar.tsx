@@ -1,15 +1,15 @@
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useState, useEffect, useCallback, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-const navItems = [
-  { name: "Home", path: "/" },
-  { name: "Blog", path: "/blog/flamtabx" },
-  { name: "Products", path: "#products", isHash: true },
-  { name: "Contact", path: "#closing", isHash: true },
-] as const;
+import { BrandMark } from "@/components/BrandMark";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const scrollToId = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -20,6 +20,13 @@ export default function Navbar(): JSX.Element {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("/");
+
+  const scrollHomeToTop = useCallback(() => {
+    if (location.hash) {
+      navigate("/", { replace: true });
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.hash, navigate]);
 
   const goToHomeHash = useCallback(
     (hashPath: string) => {
@@ -72,45 +79,92 @@ export default function Navbar(): JSX.Element {
       active ? "text-primary" : "text-foreground hover:text-primary"
     );
 
+  const blogMenuActive = location.pathname.startsWith("/blog");
+
+  const handleLogoOrHomeClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      scrollHomeToTop();
+    }
+    setIsOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           to="/"
-          className="flex items-center gap-2 text-lg font-bold tracking-tight text-primary transition-opacity hover:opacity-85"
+          onClick={handleLogoOrHomeClick}
+          className="flex items-center gap-2.5 text-lg font-bold tracking-tight text-primary transition-opacity hover:opacity-85"
         >
-          <span className="h-6 w-2 rounded-sm bg-primary" aria-hidden />
+          <BrandMark />
           FlamTabX
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.path;
-            if ("isHash" in item && item.isHash) {
-              return (
-                <a
-                  key={item.name}
-                  href={item.path}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    goToHomeHash(item.path);
-                  }}
-                  className={linkClass(isActive)}
-                >
-                  {item.name}
-                </a>
-              );
+          <NavLink
+            to="/"
+            end
+            onClick={(e) => {
+              if (location.pathname === "/") {
+                e.preventDefault();
+                scrollHomeToTop();
+              }
+            }}
+            className={({ isActive }) =>
+              linkClass(isActive && activeSection === "/" && !location.hash)
             }
-            return (
-              <NavLink
-                key={item.name}
-                to={item.path}
-                className={({ isActive: na }) => linkClass(na || isActive)}
-              >
-                {item.name}
-              </NavLink>
-            );
-          })}
+          >
+            Home
+          </NavLink>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              type="button"
+              className={cn(
+                "flex items-center gap-1 text-sm font-medium outline-none transition-colors",
+                blogMenuActive ? "text-primary" : "text-foreground hover:text-primary"
+              )}
+            >
+              Blog
+              <ChevronDown className="h-4 w-4 opacity-70" aria-hidden />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="min-w-[12rem]">
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link to="/blog">All posts</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link to="/blog/flamtabx">Venture story</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link to="/blog/energy-calculator">Calculator research</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link to="/blog/pdrc-engineering">Formulas & pipeline</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <a
+            href="#products"
+            onClick={(e) => {
+              e.preventDefault();
+              goToHomeHash("#products");
+            }}
+            className={linkClass(activeSection === "#products")}
+          >
+            Products
+          </a>
+          <a
+            href="#closing"
+            onClick={(e) => {
+              e.preventDefault();
+              goToHomeHash("#closing");
+            }}
+            className={linkClass(activeSection === "#closing")}
+          >
+            Contact
+          </a>
         </nav>
 
         <button
@@ -132,35 +186,79 @@ export default function Navbar(): JSX.Element {
             className="border-t border-border bg-background md:hidden"
           >
             <div className="flex flex-col space-y-4 px-6 py-4">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.path;
-                if ("isHash" in item && item.isHash) {
-                  return (
-                    <a
-                      key={item.name}
-                      href={item.path}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        goToHomeHash(item.path);
-                        setIsOpen(false);
-                      }}
-                      className={linkClass(isActive)}
-                    >
-                      {item.name}
-                    </a>
-                  );
+              <NavLink
+                to="/"
+                end
+                onClick={(e) => {
+                  if (location.pathname === "/") {
+                    e.preventDefault();
+                    scrollHomeToTop();
+                  }
+                  setIsOpen(false);
+                }}
+                className={({ isActive }) =>
+                  linkClass(isActive && activeSection === "/" && !location.hash)
                 }
-                return (
-                  <NavLink
-                    key={item.name}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive: na }) => linkClass(na || isActive)}
-                  >
-                    {item.name}
-                  </NavLink>
-                );
-              })}
+              >
+                Home
+              </NavLink>
+
+              <div className="space-y-2 border-l-2 border-primary/30 pl-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Blog
+                </p>
+                <Link
+                  to="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className={linkClass(location.pathname === "/blog")}
+                >
+                  All posts
+                </Link>
+                <Link
+                  to="/blog/flamtabx"
+                  onClick={() => setIsOpen(false)}
+                  className={linkClass(location.pathname === "/blog/flamtabx")}
+                >
+                  Venture story
+                </Link>
+                <Link
+                  to="/blog/energy-calculator"
+                  onClick={() => setIsOpen(false)}
+                  className={linkClass(location.pathname === "/blog/energy-calculator")}
+                >
+                  Calculator research
+                </Link>
+                <Link
+                  to="/blog/pdrc-engineering"
+                  onClick={() => setIsOpen(false)}
+                  className={linkClass(location.pathname === "/blog/pdrc-engineering")}
+                >
+                  Formulas & pipeline
+                </Link>
+              </div>
+
+              <a
+                href="#products"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToHomeHash("#products");
+                  setIsOpen(false);
+                }}
+                className={linkClass(activeSection === "#products")}
+              >
+                Products
+              </a>
+              <a
+                href="#closing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToHomeHash("#closing");
+                  setIsOpen(false);
+                }}
+                className={linkClass(activeSection === "#closing")}
+              >
+                Contact
+              </a>
             </div>
           </motion.div>
         )}

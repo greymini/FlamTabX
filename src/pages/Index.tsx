@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
@@ -15,6 +15,27 @@ import ClosingSection from "@/components/sections/ClosingSection";
 
 const Index = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = "FlamTabX — Climate-adaptive bio-based coatings";
+    const meta = document.querySelector('meta[name="description"]');
+    const prevDesc = meta?.getAttribute("content") ?? "";
+    meta?.setAttribute(
+      "content",
+      "Passive, bio-based coatings for cooler, drier, healthier buildings—thermal management, moisture control, and engineered surface safety."
+    );
+    return () => {
+      document.title = prevTitle;
+      if (meta) meta.setAttribute("content", prevDesc);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (location.pathname === "/" && !location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const id = location.hash.replace(/^#/, "");

@@ -2,18 +2,18 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/sections/Navbar";
 import { BlogArticle } from "@/components/blog/BlogArticle";
-import pitchMarkdown from "@/content/flamtabx-pitch.md?raw";
+import researchMarkdown from "@/content/pdrc-calculator-research.md?raw";
 
-const FlamTabXBlog = () => {
+const EnergyCalculatorResearch = () => {
   useEffect(() => {
     const prev = document.title;
     document.title =
-      "FlamTabX — Venture story | Climate-adaptive coating & passive cooling";
+      "FlamTabX — PDRC calculator methodology | NASA POWER, IEA, lookup pipeline";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Why FlamTabX: heat & moisture problem, product thesis, pilots, GTM, team, impact, and IP—plus links to the PDRC calculator and methodology article."
+      "How the passive cooling calculator works: PDRC physics, pre-computed lookups, NASA POWER GHI, IEA grid factors, and limitations. Link to formulas deep dive."
     );
     return () => {
       document.title = prev;
@@ -28,39 +28,38 @@ const FlamTabXBlog = () => {
         <header className="border-b border-border bg-card/60 backdrop-blur-sm">
           <div className="mx-auto max-w-6xl px-6 py-8">
             <p className="text-sm font-medium uppercase tracking-wider text-primary">
-              Why FlamTabX
+              Methodology
             </p>
             <h1 className="font-display mt-2 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-              Venture story
+              PDRC energy calculator
             </h1>
             <p className="mt-2 max-w-2xl text-muted-foreground">
-              A concise narrative for explorers and investors (figures from the
-              original deck omitted). Use the table of contents to jump around.
-              For geography-specific savings, try the{" "}
+              A readable summary of the lookup pipeline and data sources. Run
+              numbers in the{" "}
               <Link
                 to="/tools/energy-savings"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
-                PDRC calculator
-              </Link>{" "}
-              and the{" "}
+                interactive tool
+              </Link>
+              ; for LaTeX-style equations and the full formula chain, open{" "}
               <Link
-                to="/blog/energy-calculator"
+                to="/blog/pdrc-engineering"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
-                methodology article
+                Formulas & pipeline
               </Link>
               .
             </p>
           </div>
         </header>
         <BlogArticle
-          markdown={pitchMarkdown}
+          markdown={researchMarkdown}
           tocFooterLinks={[
             { to: "/blog", label: "All posts →" },
-            { to: "/tools/energy-savings", label: "PDRC energy calculator →" },
-            { to: "/blog/energy-calculator", label: "Calculator methodology →" },
             { to: "/blog/pdrc-engineering", label: "Formulas & pipeline →" },
+            { to: "/tools/energy-savings", label: "Open calculator →" },
+            { to: "/blog/flamtabx", label: "Venture story →" },
           ]}
         />
       </main>
@@ -68,4 +67,4 @@ const FlamTabXBlog = () => {
   );
 };
 
-export default FlamTabXBlog;
+export default EnergyCalculatorResearch;

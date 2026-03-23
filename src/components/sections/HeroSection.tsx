@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroTexture from "@/assets/coating-closeup.jpg";
 
 const HeroSection = () => {
@@ -11,7 +12,7 @@ const HeroSection = () => {
           filter: "brightness(0.5) contrast(1.05)",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/75 to-background/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-primary/[0.12] to-background/40" />
       </div>
 
       <div className="relative z-10 section-container">
@@ -53,6 +54,32 @@ const HeroSection = () => {
             From informal housing to MSME workshops, we are building a passive
             layer people can actually afford to apply.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.65, ease: "easeOut" }}
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+          >
+            <Link
+              to="/tools/energy-savings"
+              className="inline-flex min-h-[44px] min-w-[10rem] items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-black/20 transition-opacity hover:opacity-90"
+            >
+              Try energy calculator
+            </Link>
+            <Link
+              to="/blog/flamtabx"
+              className="inline-flex min-h-[44px] min-w-[10rem] items-center justify-center rounded-lg border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+            >
+              Read the story
+            </Link>
+            <a
+              href="#closing"
+              className="inline-flex min-h-[44px] items-center justify-center px-3 text-sm font-medium text-white/90 underline-offset-4 drop-shadow-[0_2px_6px_rgba(0,0,0,0.65)] hover:underline"
+            >
+              Contact
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

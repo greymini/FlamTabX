@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import LOOKUP_RAW from "@/data/lookup_compact.json";
 
@@ -22,10 +23,7 @@ interface CityData {
   ghi: number;
   cdd: number;
   grid_ef: number;
-  b: Record<
-    BuildingType,
-    Record<RoofCondition, SavingsPerM2>
-  >;
+  b: Record<BuildingType, Record<RoofCondition, SavingsPerM2>>;
 }
 
 const LOOKUP_DATA = LOOKUP_RAW as Record<string, CityData>;
@@ -80,11 +78,11 @@ function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-white/10 bg-white/[0.04] p-5",
+        "rounded-2xl border border-border bg-card p-5 shadow-sm",
         className
       )}
     >
-      <p className="mb-4 text-xs font-bold uppercase tracking-wider text-sky-200/80">
+      <p className="mb-4 text-xs font-bold uppercase tracking-wider text-primary">
         {title}
       </p>
       {children}
@@ -94,7 +92,7 @@ function Card({
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-2 text-xs font-medium text-slate-400">{children}</p>
+    <p className="mb-2 text-xs font-medium text-muted-foreground">{children}</p>
   );
 }
 
@@ -122,22 +120,21 @@ function BigStat({
       >
         {value}
       </div>
-      <div className={cn("mt-1 text-xs opacity-80", colorClass)}>{unit}</div>
-      <div className="mt-1 text-[11px] text-slate-500">{label}</div>
+      <div className={cn("mt-1 text-xs opacity-90", colorClass)}>{unit}</div>
+      <div className="mt-1 text-[11px] text-muted-foreground">{label}</div>
     </div>
   );
 }
 
 const inputClass =
-  "w-full rounded-lg border border-white/15 bg-white/5 px-3.5 py-2.5 text-sm text-slate-100 outline-none focus:border-primary focus:ring-1 focus:ring-primary";
+  "w-full rounded-lg border border-input bg-secondary/30 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-1 focus:ring-ring";
 
 export default function EnergyCalculator() {
   const [city, setCity] = useState("Dubai,UAE");
   const [area, setArea] = useState(500);
   const [areaUnit, setAreaUnit] = useState<"m2" | "ft2">("m2");
   const [buildingType, setBuildingType] = useState<BuildingType>("warehouse");
-  const [roofCondition, setRoofCondition] =
-    useState<RoofCondition>("dark");
+  const [roofCondition, setRoofCondition] = useState<RoofCondition>("dark");
   const [electricityPrice, setElectricityPrice] = useState(0.12);
   const [results, setResults] = useState<CalcResults | null>(null);
   const [animating, setAnimating] = useState(false);
@@ -215,24 +212,37 @@ export default function EnergyCalculator() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[hsl(220,18%,8%)] text-slate-100">
-      <div className="relative overflow-hidden border-b border-sky-500/20 bg-gradient-to-br from-[hsl(220,24%,12%)] via-[hsl(220,22%,10%)] to-[hsl(220,18%,8%)] px-6 py-10 text-center">
+    <div className="min-h-screen bg-background pb-12">
+      <div className="relative overflow-hidden border-b border-border bg-gradient-to-br from-card via-secondary/20 to-background px-6 py-10 text-center">
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(56,189,248,0.12),transparent_70%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,hsl(var(--primary)/0.15),transparent_70%)]"
           aria-hidden
         />
         <div className="relative mx-auto max-w-2xl">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-sky-300">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-400" />
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
             PDRC energy savings estimator
           </div>
-          <h1 className="bg-gradient-to-r from-slate-100 via-sky-200 to-sky-400 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent md:text-4xl">
+          <h1 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Passive cooling energy calculator
           </h1>
-          <p className="mt-3 text-sm leading-relaxed text-slate-400 md:text-[15px]">
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
             Estimate annual kWh saved and CO₂ avoided for your roof — using
             pre-computed lookup tables from NASA POWER solar data, IEA grid
-            emission factors, and PDRC-style physics (see methodology below).
+            emission factors, and PDRC-style physics.{" "}
+            <Link
+              to="/blog/energy-calculator"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              How we built this
+            </Link>
+            {" · "}
+            <Link
+              to="/blog/pdrc-engineering"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Formulas
+            </Link>
           </p>
         </div>
       </div>
@@ -256,7 +266,7 @@ export default function EnergyCalculator() {
               />
               {showDropdown && filteredCities.length > 0 && (
                 <div
-                  className="absolute left-0 right-0 top-[calc(100%+6px)] z-[100] max-h-56 overflow-y-auto rounded-xl border border-sky-500/30 bg-[#111827] shadow-xl"
+                  className="absolute left-0 right-0 top-[calc(100%+6px)] z-[100] max-h-56 overflow-y-auto rounded-xl border border-border bg-popover shadow-lg"
                   role="listbox"
                 >
                   {filteredCities.map((c) => (
@@ -266,14 +276,14 @@ export default function EnergyCalculator() {
                       role="option"
                       onClick={() => handleCitySelect(c)}
                       className={cn(
-                        "flex w-full cursor-pointer border-b border-white/5 px-3.5 py-2.5 text-left text-sm transition-colors last:border-0",
+                        "flex w-full cursor-pointer border-b border-border px-3.5 py-2.5 text-left text-sm transition-colors last:border-0",
                         c === city
-                          ? "bg-sky-500/15 text-sky-300"
-                          : "text-slate-300 hover:bg-sky-500/10"
+                          ? "bg-primary/15 text-primary"
+                          : "text-foreground hover:bg-primary/10"
                       )}
                     >
                       <span className="font-semibold">{c.split(",")[0]}</span>
-                      <span className="ml-2 text-xs text-slate-500">
+                      <span className="ml-2 text-xs text-muted-foreground">
                         {c.split(",")[1]}
                       </span>
                     </button>
@@ -291,10 +301,10 @@ export default function EnergyCalculator() {
                 ].map(([k, v]) => (
                   <div
                     key={k}
-                    className="rounded-md border border-sky-500/20 bg-sky-500/5 px-2.5 py-1 text-xs"
+                    className="rounded-md border border-primary/25 bg-primary/5 px-2.5 py-1 text-xs"
                   >
-                    <span className="text-slate-500">{k}: </span>
-                    <span className="font-semibold text-sky-400">{v}</span>
+                    <span className="text-muted-foreground">{k}: </span>
+                    <span className="font-semibold text-primary">{v}</span>
                   </div>
                 ))}
               </div>
@@ -324,7 +334,7 @@ export default function EnergyCalculator() {
               </select>
             </div>
             {areaUnit === "ft2" && (
-              <p className="mb-3 text-xs text-slate-500">
+              <p className="mb-3 text-xs text-muted-foreground">
                 = {areaM2.toFixed(1)} m²
               </p>
             )}
@@ -339,8 +349,8 @@ export default function EnergyCalculator() {
                   className={cn(
                     "rounded-lg border px-3 py-2 text-left text-xs transition-all",
                     buildingType === k
-                      ? "border-sky-400 bg-sky-500/15 font-semibold text-sky-300"
-                      : "border-white/10 bg-white/[0.04] text-slate-400 hover:border-white/20"
+                      ? "border-primary bg-primary/15 font-semibold text-primary"
+                      : "border-border bg-secondary/20 text-muted-foreground hover:border-primary/40"
                   )}
                 >
                   {BUILDING_LABELS[k]}
@@ -358,16 +368,16 @@ export default function EnergyCalculator() {
                   className={cn(
                     "flex items-center gap-2 rounded-lg border px-3.5 py-2.5 text-left text-sm transition-all",
                     roofCondition === k
-                      ? "border-sky-400 bg-sky-500/15 font-semibold text-sky-300"
-                      : "border-white/10 bg-white/[0.04] text-slate-400"
+                      ? "border-primary bg-primary/15 font-semibold text-primary"
+                      : "border-border bg-secondary/20 text-muted-foreground"
                   )}
                 >
                   <span
                     className={cn(
-                      "h-5 w-5 shrink-0 rounded border border-white/20",
-                      k === "dark" && "bg-[#1a1a1a]",
-                      k === "medium" && "bg-[#7a7a7a]",
-                      k === "light" && "bg-[#e8e8e8]"
+                      "h-5 w-5 shrink-0 rounded border border-border",
+                      k === "dark" && "bg-zinc-900",
+                      k === "medium" && "bg-zinc-500",
+                      k === "light" && "bg-zinc-100"
                     )}
                   />
                   {ROOF_LABELS[k]}
@@ -390,11 +400,11 @@ export default function EnergyCalculator() {
                 }
                 className="h-2 flex-1 cursor-pointer accent-primary"
               />
-              <div className="min-w-[3.5rem] rounded-lg border border-sky-400/30 bg-sky-500/10 px-3 py-1 text-center text-sm font-bold text-sky-400">
+              <div className="min-w-[3.5rem] rounded-lg border border-primary/35 bg-primary/10 px-3 py-1 text-center text-sm font-bold text-primary">
                 ${electricityPrice.toFixed(2)}
               </div>
             </div>
-            <p className="mt-2 text-xs text-slate-500">
+            <p className="mt-2 text-xs text-muted-foreground">
               Global average ≈ $0.12/kWh · US ≈ $0.16 · UK ≈ $0.28 · India ≈
               $0.08
             </p>
@@ -406,11 +416,11 @@ export default function EnergyCalculator() {
             <>
               <div
                 className={cn(
-                  "rounded-2xl border border-sky-500/25 bg-gradient-to-br from-[#0d2137] to-[#091a2d] p-6 transition-all duration-300",
+                  "rounded-2xl border border-primary/25 bg-gradient-to-br from-card to-secondary/30 p-6 transition-all duration-300",
                   animating && "scale-[0.98] opacity-90"
                 )}
               >
-                <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-sky-400">
+                <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary">
                   Annual savings estimate
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -418,28 +428,28 @@ export default function EnergyCalculator() {
                     value={results.kwhPerYear.toLocaleString()}
                     unit="kWh / yr"
                     label="Energy saved"
-                    colorClass="text-sky-400"
+                    colorClass="text-energy"
                     icon="⚡"
                   />
                   <BigStat
                     value={results.co2MTPerYear.toLocaleString()}
                     unit="MT CO₂e / yr"
                     label="Carbon avoided"
-                    colorClass="text-emerald-400"
+                    colorClass="text-impact"
                     icon="🌿"
                   />
                   <BigStat
                     value={`$${results.costSavings.toLocaleString()}`}
                     unit="/ yr"
                     label="Cost savings"
-                    colorClass="text-amber-300"
+                    colorClass="text-highlight"
                     icon="💰"
                   />
                   <BigStat
                     value={results.homeEquiv}
                     unit="homes"
                     label="Equivalent homes (US avg.)"
-                    colorClass="text-violet-300"
+                    colorClass="text-climate"
                     icon="🏠"
                   />
                 </div>
@@ -454,14 +464,18 @@ export default function EnergyCalculator() {
                   ].map(([icon, val, unit, label]) => (
                     <div
                       key={label}
-                      className="rounded-xl border border-white/10 bg-white/[0.04] px-2 py-3 text-center"
+                      className="rounded-xl border border-border bg-secondary/20 px-2 py-3 text-center"
                     >
                       <div className="text-lg">{icon}</div>
-                      <div className="text-base font-extrabold text-slate-100">
+                      <div className="text-base font-extrabold text-foreground">
                         {val}
                       </div>
-                      <div className="text-[11px] text-slate-500">{unit}</div>
-                      <div className="text-[11px] text-slate-400">{label}</div>
+                      <div className="text-[11px] text-muted-foreground">
+                        {unit}
+                      </div>
+                      <div className="text-[11px] text-muted-foreground/90">
+                        {label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -485,7 +499,7 @@ export default function EnergyCalculator() {
                   ].map(({ icon, text }) => (
                     <div
                       key={text}
-                      className="flex items-center gap-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2.5 text-xs text-emerald-100/90"
+                      className="flex items-center gap-3 rounded-lg border border-impact/25 bg-impact/10 px-3 py-2.5 text-xs text-foreground"
                     >
                       <span className="text-lg">{icon}</span>
                       {text}
@@ -501,18 +515,18 @@ export default function EnergyCalculator() {
                   return (
                     <div className="grid grid-cols-3 gap-2">
                       {[
-                        ["kWh/m²/yr", d.k.toFixed(1), "text-sky-400"],
-                        ["kg CO₂/m²/yr", d.c.toFixed(2), "text-emerald-400"],
-                        ["Area (m²)", areaM2.toFixed(0), "text-amber-300"],
+                        ["kWh/m²/yr", d.k.toFixed(1), "text-energy"],
+                        ["kg CO₂/m²/yr", d.c.toFixed(2), "text-impact"],
+                        ["Area (m²)", areaM2.toFixed(0), "text-highlight"],
                       ].map(([label, val, col]) => (
                         <div
                           key={label}
-                          className="rounded-lg border border-white/10 bg-white/[0.04] px-2 py-3 text-center"
+                          className="rounded-lg border border-border bg-secondary/20 px-2 py-3 text-center"
                         >
                           <div className={cn("text-base font-extrabold", col)}>
                             {val}
                           </div>
-                          <div className="mt-1 text-[11px] text-slate-500">
+                          <div className="mt-1 text-[11px] text-muted-foreground">
                             {label}
                           </div>
                         </div>
@@ -522,20 +536,42 @@ export default function EnergyCalculator() {
                 })()}
               </Card>
 
-              <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs leading-relaxed text-slate-500">
-                <strong className="text-slate-400">Methodology:</strong> Results
-                use a pre-computed lookup (PDRC-style cooling physics, NASA POWER
-                GHI, IEA grid factors, ASHRAE CDD, climate humidity corrections).
-                For bankable or compliance-grade numbers, run a full
-                EnergyPlus / ORNL Roof Savings Calculator study for your site.
+              <div className="rounded-xl border border-border bg-secondary/15 p-4 text-xs leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">Methodology:</strong>{" "}
+                Pre-computed lookup using PDRC-style cooling physics, NASA POWER
+                GHI, IEA grid factors, ASHRAE CDD, and humidity corrections. For
+                bankable estimates, run EnergyPlus or the ORNL Roof Savings
+                Calculator for your site.
               </div>
             </>
           ) : (
-            <div className="flex h-64 items-center justify-center rounded-2xl border border-dashed border-white/15 text-slate-500">
+            <div className="flex h-64 items-center justify-center rounded-2xl border border-dashed border-border text-muted-foreground">
               Configure inputs to see results
             </div>
           )}
         </div>
+      </div>
+
+      <div className="mx-auto mt-4 flex max-w-[1100px] flex-wrap items-center justify-center gap-x-6 gap-y-2 px-5 text-center text-xs text-muted-foreground">
+        <span>NASA POWER</span>
+        <span className="text-border">·</span>
+        <span>IEA grid factors</span>
+        <span className="text-border">·</span>
+        <span>ASHRAE CDD</span>
+        <span className="text-border">·</span>
+        <Link
+          to="/blog/energy-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Research write-up
+        </Link>
+        <span className="text-border">·</span>
+        <Link
+          to="/blog/pdrc-engineering"
+          className="font-medium text-primary hover:underline"
+        >
+          Formulas
+        </Link>
       </div>
     </div>
   );

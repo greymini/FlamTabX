@@ -5,7 +5,12 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
+    const prev = document.title;
+    document.title = "Page not found — FlamTabX";
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    return () => {
+      document.title = prev;
+    };
   }, [location.pathname]);
 
   return (
