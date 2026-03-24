@@ -31,7 +31,8 @@ const HeroSection = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="mb-8 font-display text-4xl font-semibold leading-tight tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] md:text-5xl lg:text-6xl"
           >
-            Cooler, healthier buildings start at the wall and roof.
+            Climate-Adaptive Coatings that dynamically regulate heat flow in
+            buildings, reducing cooling loads without electronics.
           </motion.h1>
 
           <motion.p
