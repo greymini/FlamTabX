@@ -8,12 +8,12 @@ const FlamTabXBlog = () => {
   useEffect(() => {
     const prev = document.title;
     document.title =
-      "FlamTabX — Venture story | Climate-adaptive coating & passive cooling";
+      "FlamTabX | Venture story: climate adaptive coating and passive cooling";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Why FlamTabX: heat & moisture problem, product thesis, pilots, GTM, team, impact, and IP—plus links to the PDRC calculator and methodology article."
+      "Why FlamTabX: heat and moisture problem, product thesis, pilots, GTM, team, impact, and IP, plus links to the PDRC calculator and methodology article."
     );
     return () => {
       document.title = prev;

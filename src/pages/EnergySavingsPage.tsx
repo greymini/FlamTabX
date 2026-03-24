@@ -6,12 +6,12 @@ import EnergyCalculator from "@/components/energy/EnergyCalculator";
 const EnergySavingsPage = () => {
   useEffect(() => {
     const prev = document.title;
-    document.title = "FlamTabX — PDRC energy savings calculator";
+    document.title = "FlamTabX | PDRC energy savings calculator";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Estimate annual kWh saved and CO₂ avoided for your roof using NASA POWER GHI, IEA grid factors, and PDRC-style physics—client-side, 84 cities."
+      "Estimate annual kWh saved and CO₂ avoided for your roof using NASA POWER GHI, IEA grid factors, and PDRC style physics. Client side, 84 cities."
     );
     return () => {
       document.title = prev;
@@ -51,7 +51,7 @@ const EnergySavingsPage = () => {
             </Link>
           </div>
           <span className="text-muted-foreground">
-            84 cities · lookup-based · client-side
+            84 cities · lookup based · client side
           </span>
         </div>
       </div>

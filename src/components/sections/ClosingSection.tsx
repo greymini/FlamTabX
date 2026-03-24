@@ -32,7 +32,7 @@ const ClosingSection = () => {
             className="text-xl md:text-2xl text-muted-foreground mb-16"
           >
             FlamTabX is designed to give hours of safer, cooler, drier living
-            back — before the next crisis.
+            back before the next crisis.
           </motion.p>
 
           <motion.div
@@ -81,11 +81,10 @@ const ClosingSection = () => {
           >
             <p className="font-semibold text-lg md:text-xl">©️ 2026 FlamTabX</p>
             <p className="font-medium">
-              A Bio-based flame-retardant coating project
+              A bio based flame retardant coating project
             </p>
             <p className="text-sm md:text-base">
-              Founded by Aditya Ratnaparkhi | Chemical Engineer (ICT Mumbai) |
-              beVisioneers Fellow '25
+              Founded by Aditya Ratnaparkhi | Chemical Engineer (ICT Mumbai)
             </p>
             <p className="text-sm md:text-base italic">
               Early-stage venture in development

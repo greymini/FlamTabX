@@ -29,9 +29,9 @@ const IntroSection = () => {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="text-subheadline max-w-2xl mx-auto"
           >
-            Climate-adaptive, bio-based coatings for roofs and walls —
+            Climate adaptive, bio based coatings for roofs and walls.
             <br />
-            cooler indoors, healthier air, and engineered surface safety.
+            Cooler indoors, healthier air, and engineered surface safety.
           </motion.p>
         </div>
       </div>

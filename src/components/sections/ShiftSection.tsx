@@ -33,8 +33,8 @@ const ShiftSection = () => {
             </p>
 
             <p className="text-lg font-medium text-foreground md:text-xl">
-              What if the paint layer did real thermal and moisture work — and
-              still supported flame-retardant performance where it matters?
+              What if the paint layer did real thermal and moisture work, and
+              still supported flame retardant performance where it matters?
             </p>
           </motion.div>
         </div>

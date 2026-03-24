@@ -4,13 +4,13 @@ import { useRef } from "react";
 
 const existingItems = [
   "Single-function (cool roof OR waterproofing OR biocide)",
-  "AC-first comfort — high bills and grid load",
+  "AC first comfort: high bills and grid load",
   "Insulation retrofits costly for informal housing",
   "Fragmented vendors, unclear combined performance",
 ];
 const flamtabxItems = [
   "One envelope layer: thermal + moisture + safer surface",
-  "Passive first — less cooling load before you add machines",
+  "Passive first: less cooling load before you add machines",
   "Paint-process friendly for retrofit at scale",
   "Built for real heat, humidity, and workshop realities",
 ];

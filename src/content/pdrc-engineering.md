@@ -1,6 +1,6 @@
-# PDRC calculator — formulas and pipeline
+# PDRC calculator: formulas and pipeline
 
-> **For readers:** This article presents the **core equations and correction factors** behind the public lookup tool. It replaces a downloadable engineering dump—everything here is meant to be read in context with the [methodology overview](/blog/energy-calculator) and the [live calculator](/tools/energy-savings).
+> **For readers:** This article presents the **core equations and correction factors** behind the public lookup tool. It replaces a downloadable engineering dump. Everything here is meant to be read in context with the [methodology overview](/blog/energy-calculator) and the [live calculator](/tools/energy-savings).
 
 ---
 
@@ -33,7 +33,7 @@ $$
 I_{\mathrm{avg}} = \min\!\left( \frac{G_{\mathrm{yr}} \times 1000 \times \beta}{\max(t_{\mathrm{cool}},\,200)} ,\; I_{\max} \right)
 $$
 
-Here $t_{\mathrm{cool}}$ is **cooling hours** per year (from climate class), i.e. hours when mechanical cooling is meaningfully active—not simply “daylight hours.”
+Here $t_{\mathrm{cool}}$ is **cooling hours** per year (from climate class), i.e. hours when mechanical cooling is meaningfully active, not simply “daylight hours.”
 
 ---
 
@@ -102,13 +102,13 @@ where $A$ is roof area (m²) and $E_{\mathrm{elec}}$ is per-m² annual savings f
 
 **Cooling hours** $t_{\mathrm{cool}}$: from a few hundred in cold climates to $\approx 4000$ in tropical near-year-round cooling.
 
-Exact keyed values live in the offline generator scripts; the [methodology article](/blog/energy-calculator) explains why we prefer **pre-computed lookups** over live simulation for this UX.
+Exact keyed values live in the offline generator scripts; the [methodology article](/blog/energy-calculator) explains why we prefer **precalculated lookups** over live simulation for this UX.
 
 ---
 
 ## Lookup table + client
 
-For each city $\times$ building type $\times$ roof baseline, the pipeline stores **pre-computed** $E_{\mathrm{elec}}$ and CO₂ per m². The website multiplies by user area and shows equivalents—**no** per-keystroke physics in the browser beyond that multiply.
+For each city $\times$ building type $\times$ roof baseline, the pipeline stores **precalculated** $E_{\mathrm{elec}}$ and CO₂ per m². The website multiplies by user area and shows equivalents. **No** per-keystroke physics in the browser beyond that multiply.
 
 ---
 
@@ -116,12 +116,12 @@ For each city $\times$ building type $\times$ roof baseline, the pipeline stores
 
 - **Roof-only:** wall and window loads are not modelled per building.
 - **Simplified radiative term:** $45\,\mathrm{W/m^2}$ and $h$ compress a full radiative transfer problem; bankable projects need site simulation (e.g. EnergyPlus, ORNL Roof Savings Calculator).
-- **Interpolation:** cities not in the table may use ML interpolation—treat as indicative.
+- **Interpolation:** cities not in the table may use ML interpolation; treat as indicative.
 
 ---
 
 ## Further reading
 
-- [PDRC methodology — narrative](/blog/energy-calculator)  
-- [Venture story — FlamTabX](/blog/flamtabx)  
+- [PDRC methodology (narrative)](/blog/energy-calculator)  
+- [Venture story: FlamTabX](/blog/flamtabx)  
 - [Run the calculator](/tools/energy-savings)

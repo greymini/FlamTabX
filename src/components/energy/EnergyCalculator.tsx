@@ -129,7 +129,12 @@ function BigStat({
 const inputClass =
   "w-full rounded-lg border border-input bg-secondary/30 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-1 focus:ring-ring";
 
-export default function EnergyCalculator() {
+export interface EnergyCalculatorProps {
+  /** Omit full-page chrome when embedded in the marketing site. */
+  embedded?: boolean;
+}
+
+export default function EnergyCalculator({ embedded = false }: EnergyCalculatorProps) {
   const [city, setCity] = useState("Dubai,UAE");
   const [area, setArea] = useState(500);
   const [areaUnit, setAreaUnit] = useState<"m2" | "ft2">("m2");
@@ -212,42 +217,53 @@ export default function EnergyCalculator() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background pb-12">
-      <div className="relative overflow-hidden border-b border-border bg-gradient-to-br from-card via-secondary/20 to-background px-6 py-10 text-center">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,hsl(var(--primary)/0.15),transparent_70%)]"
-          aria-hidden
-        />
-        <div className="relative mx-auto max-w-2xl">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-            PDRC energy savings estimator
+    <div
+      className={cn(
+        embedded ? "pb-4" : "min-h-screen bg-background pb-12"
+      )}
+    >
+      {!embedded && (
+        <div className="relative overflow-hidden border-b border-border bg-gradient-to-br from-card via-secondary/20 to-background px-6 py-10 text-center">
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,hsl(var(--primary)/0.15),transparent_70%)]"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-2xl">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+              PDRC energy savings estimator
+            </div>
+            <h1 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+              Passive cooling energy calculator
+            </h1>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+              Estimate annual kWh saved and CO₂ avoided for your roof using
+              precalculated lookup tables from NASA POWER solar data, IEA grid
+              emission factors, and PDRC style physics.{" "}
+              <Link
+                to="/blog/energy-calculator"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                How we built this
+              </Link>
+              {" · "}
+              <Link
+                to="/blog/pdrc-engineering"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                Formulas
+              </Link>
+            </p>
           </div>
-          <h1 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Passive cooling energy calculator
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
-            Estimate annual kWh saved and CO₂ avoided for your roof — using
-            pre-computed lookup tables from NASA POWER solar data, IEA grid
-            emission factors, and PDRC-style physics.{" "}
-            <Link
-              to="/blog/energy-calculator"
-              className="font-medium text-primary underline-offset-4 hover:underline"
-            >
-              How we built this
-            </Link>
-            {" · "}
-            <Link
-              to="/blog/pdrc-engineering"
-              className="font-medium text-primary underline-offset-4 hover:underline"
-            >
-              Formulas
-            </Link>
-          </p>
         </div>
-      </div>
+      )}
 
-      <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-6 px-5 py-8 lg:grid-cols-2">
+      <div
+        className={cn(
+          "mx-auto grid max-w-[1100px] grid-cols-1 gap-6 lg:grid-cols-2",
+          embedded ? "px-0 py-2" : "px-5 py-8"
+        )}
+      >
         <div className="flex flex-col gap-4">
           <Card title="Location">
             <Label>City / country</Label>
@@ -538,7 +554,7 @@ export default function EnergyCalculator() {
 
               <div className="rounded-xl border border-border bg-secondary/15 p-4 text-xs leading-relaxed text-muted-foreground">
                 <strong className="text-foreground">Methodology:</strong>{" "}
-                Pre-computed lookup using PDRC-style cooling physics, NASA POWER
+                Precalculated lookup using PDRC style cooling physics, NASA POWER
                 GHI, IEA grid factors, ASHRAE CDD, and humidity corrections. For
                 bankable estimates, run EnergyPlus or the ORNL Roof Savings
                 Calculator for your site.
@@ -552,7 +568,12 @@ export default function EnergyCalculator() {
         </div>
       </div>
 
-      <div className="mx-auto mt-4 flex max-w-[1100px] flex-wrap items-center justify-center gap-x-6 gap-y-2 px-5 text-center text-xs text-muted-foreground">
+      <div
+        className={cn(
+          "mx-auto mt-4 flex max-w-[1100px] flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-xs text-muted-foreground",
+          embedded ? "px-0" : "px-5"
+        )}
+      >
         <span>NASA POWER</span>
         <span className="text-border">·</span>
         <span>IEA grid factors</span>
