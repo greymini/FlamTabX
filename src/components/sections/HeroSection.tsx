@@ -23,7 +23,7 @@ const HeroSection = () => {
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-primary"
           >
-            Climate-adaptive surfaces
+            Climate adaptive surfaces
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -40,9 +40,9 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
             className="mx-auto mb-6 max-w-2xl text-xl font-light leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)] md:text-2xl"
           >
-            FlamTabX is a bio-based, climate-adaptive coating that cuts heat
+            FlamTabX is a bio based, climate adaptive coating that cuts heat
             load, manages moisture, and supports safer, more durable surfaces
-            — without relying on more grid power.
+            without relying on more grid power.
           </motion.p>
 
           <motion.p

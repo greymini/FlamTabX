@@ -7,7 +7,7 @@ const steps = [
   {
     title: "Applied like paint",
     description:
-      "Roll or spray on roofs and walls — compatible with common substrates used in homes and MSME sheds.",
+      "Roll or spray on roofs and walls, compatible with common substrates used in homes and MSME sheds.",
   },
   {
     title: "Buffers heat and moisture",
@@ -17,7 +17,7 @@ const steps = [
   {
     title: "Engineered for safer surfaces",
     description:
-      "Flame-retardant design targets slower spread and more predictable char — buying time when exposure occurs.",
+      "Flame retardant design targets slower spread and more predictable char, buying time when exposure occurs.",
   },
 ];
 

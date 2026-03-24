@@ -5,9 +5,9 @@ import workshopImage from "@/assets/workshop-environment.jpg";
 
 const useCases = [
   "Independent houses & low-rise housing",
-  "Workshops & MSMEs in heat-stressed corridors",
+  "Workshops and MSMEs in high heat corridors",
   "Warehouses & logistics roofs",
-  "Hot-humid monsoon belts",
+  "Hot, humid monsoon belts",
   "Retrofits where insulation is impractical",
   "Industrial sheds needing cooler work floors",
 ];

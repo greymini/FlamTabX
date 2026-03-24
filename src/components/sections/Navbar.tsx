@@ -47,18 +47,16 @@ export default function Navbar(): JSX.Element {
         return;
       }
 
-      const sections = ["products", "closing"];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom > 100) {
-            setActiveSection(`#${section}`);
-            return;
-          }
+      const y = window.scrollY + 120;
+      const ids = ["products", "calculator", "closing"];
+      let current = "/";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) {
+          current = `#${id}`;
         }
       }
-      setActiveSection("/");
+      setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -156,6 +154,16 @@ export default function Navbar(): JSX.Element {
             Products
           </a>
           <a
+            href="#calculator"
+            onClick={(e) => {
+              e.preventDefault();
+              goToHomeHash("#calculator");
+            }}
+            className={linkClass(activeSection === "#calculator")}
+          >
+            Calculator
+          </a>
+          <a
             href="#closing"
             onClick={(e) => {
               e.preventDefault();
@@ -247,6 +255,17 @@ export default function Navbar(): JSX.Element {
                 className={linkClass(activeSection === "#products")}
               >
                 Products
+              </a>
+              <a
+                href="#calculator"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToHomeHash("#calculator");
+                  setIsOpen(false);
+                }}
+                className={linkClass(activeSection === "#calculator")}
+              >
+                Calculator
               </a>
               <a
                 href="#closing"

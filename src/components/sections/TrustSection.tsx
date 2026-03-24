@@ -39,9 +39,9 @@ const TrustSection = () => {
                 to="/tools/energy-savings"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
-                PDRC-style energy calculator
+                PDRC style energy calculator
               </Link>
-              . How it is built—data sources, lookup design, and limits—is summarized in the{" "}
+              . How it is built (data sources, lookup design, and limits) is summarized in the{" "}
               <Link
                 to="/blog/energy-calculator"
                 className="font-medium text-primary underline-offset-4 hover:underline"

@@ -7,7 +7,7 @@
 
 @layer base {
   :root {
-    /* Climate / energy — cool neutrals, teal primary, emerald impact */
+    /* Climate / energy: cool neutrals, teal primary, emerald impact */
     --background: 210 30% 98%;
     --foreground: 222 47% 11%;
 

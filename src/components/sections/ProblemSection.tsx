@@ -6,7 +6,7 @@ const problems = [
   "Indoor heat regularly exceeds safe comfort bands where AC is scarce",
   "Humidity drives damp walls, mold, and poor air quality in monsoon seasons",
   "Grid-powered cooling is costly, uneven, and adds carbon where grids are dirty",
-  "Fragmented paints solve only reflectivity, waterproofing, or biocides — not all three",
+  "Fragmented paints solve only reflectivity, waterproofing, or biocides, not all three",
   "When fire does reach exposed materials, many substrates still offer little resistance",
 ];
 
@@ -51,7 +51,7 @@ const ProblemSection = () => {
               The real gap isn't one more box product.
             </p>
             <p className="font-display text-xl font-medium text-[hsl(var(--section-dark-foreground))] md:text-2xl">
-              It's an affordable, passive envelope layer — thermal, moisture, and
+              It is an affordable, passive envelope layer: thermal, moisture, and
               safer materials together.
             </p>
           </motion.div>

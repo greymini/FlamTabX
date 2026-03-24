@@ -32,7 +32,7 @@ const QuestionSection = () => {
           >
             <p>Most buildings still behave like heat sponges.</p>
             <p>
-              The gap is not a lack of care — it is a lack of affordable,
+              The gap is not a lack of care. It is a lack of affordable,
               passive material systems that work together.
             </p>
           </motion.div>

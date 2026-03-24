@@ -11,9 +11,9 @@ export interface BlogPostMeta {
 export const blogPosts: BlogPostMeta[] = [
   {
     slug: "pdrc-engineering",
-    title: "PDRC calculator — formulas and pipeline",
+    title: "PDRC calculator: formulas and pipeline",
     description:
-      "Key physics equations, humidity and heating corrections, and how kWh and CO₂ flow from roof area and climate—typeset for clarity.",
+      "Key physics equations, humidity and heating corrections, and how kWh and CO₂ flow from roof area and climate, typeset for clarity.",
     publishedAt: "2025-03-20",
     readMinutes: 14,
     path: "/blog/pdrc-engineering",
@@ -31,7 +31,7 @@ export const blogPosts: BlogPostMeta[] = [
     slug: "flamtabx",
     title: "FlamTabX venture story",
     description:
-      "Problem, product, traction, go-to-market, team, impact, and IP—structured for explorers and investors.",
+      "Problem, product, traction, go to market, team, impact, and IP, structured for explorers and investors.",
     publishedAt: "2025-03-15",
     readMinutes: 11,
     path: "/blog/flamtabx",

@@ -9,6 +9,7 @@ import IntroSection from "@/components/sections/IntroSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import ComparisonSection from "@/components/sections/ComparisonSection";
 import TrustSection from "@/components/sections/TrustSection";
+import EnergyCalculatorSection from "@/components/sections/EnergyCalculatorSection";
 import AudienceSection from "@/components/sections/AudienceSection";
 import MissionSection from "@/components/sections/MissionSection";
 import ClosingSection from "@/components/sections/ClosingSection";
@@ -18,12 +19,12 @@ const Index = () => {
 
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = "FlamTabX — Climate-adaptive bio-based coatings";
+    document.title = "FlamTabX | Climate adaptive, bio based coatings";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Passive, bio-based coatings for cooler, drier, healthier buildings—thermal management, moisture control, and engineered surface safety."
+      "Passive, bio based coatings for cooler, drier, healthier buildings: thermal management, moisture control, and engineered surface safety."
     );
     return () => {
       document.title = prevTitle;
@@ -75,6 +76,9 @@ const Index = () => {
 
         {/* Section 08 - Trust & Research */}
         <TrustSection />
+
+        {/* Section 08b - PDRC calculator (featured) */}
+        <EnergyCalculatorSection />
 
         {/* Section 09 - Who It's For */}
         <AudienceSection />

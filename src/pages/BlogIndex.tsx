@@ -8,7 +8,7 @@ import { ArrowRight, Clock, Calendar } from "lucide-react";
 const BlogIndex = () => {
   useEffect(() => {
     const prev = document.title;
-    document.title = "FlamTabX — Blog";
+    document.title = "FlamTabX | Blog";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
@@ -36,7 +36,7 @@ const BlogIndex = () => {
               Blog
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Stories, methodology, and technical depth on climate-adaptive
+              Stories, methodology, and technical depth on climate adaptive
               surfaces and the PDRC savings tool.
             </p>
           </div>

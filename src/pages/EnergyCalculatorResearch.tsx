@@ -8,12 +8,12 @@ const EnergyCalculatorResearch = () => {
   useEffect(() => {
     const prev = document.title;
     document.title =
-      "FlamTabX — PDRC calculator methodology | NASA POWER, IEA, lookup pipeline";
+      "FlamTabX | PDRC calculator methodology: NASA POWER, IEA, lookup pipeline";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "How the passive cooling calculator works: PDRC physics, pre-computed lookups, NASA POWER GHI, IEA grid factors, and limitations. Link to formulas deep dive."
+      "How the passive cooling calculator works: PDRC physics, precalculated lookups, NASA POWER GHI, IEA grid factors, and limitations. Link to formulas deep dive."
     );
     return () => {
       document.title = prev;
