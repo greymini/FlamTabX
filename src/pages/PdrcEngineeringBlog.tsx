@@ -8,12 +8,12 @@ const PdrcEngineeringBlog = () => {
   useEffect(() => {
     const prev = document.title;
     document.title =
-      "FlamTabX | PDRC formulas and pipeline: engineering deep dive";
+      "FlamTabX | Passive cooling formulas and pipeline: engineering deep dive";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Equations behind the PDRC calculator: net cooling power, GHI to irradiance, kWh and CO₂ per m², humidity and heating corrections, typeset with LaTeX."
+      "Equations behind the passive cooling calculator: net cooling power, GHI to irradiance, kWh and CO₂ per m², humidity and heating corrections, typeset with LaTeX."
     );
     return () => {
       document.title = prev;

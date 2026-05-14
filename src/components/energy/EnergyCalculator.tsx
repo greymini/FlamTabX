@@ -409,13 +409,13 @@ export default function EnergyCalculator({ embedded = false }: EnergyCalculatorP
           <div className="relative mx-auto max-w-2xl">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-              PDRC energy savings estimator
+              Energy savings estimator
             </div>
             <h1 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
               Passive cooling energy calculator
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
-              Conservative field-calibrated estimates of annual kWh saved and CO₂ avoided when upgrading to a PDRC roof.
+              Conservative field-calibrated estimates of annual kWh saved and CO₂ avoided when upgrading to a passive cooling roof.
               Results shown as conservative / central / optimistic ranges.{" "}
               <Link
                 to="/blog/energy-calculator"
@@ -619,7 +619,7 @@ export default function EnergyCalculator({ embedded = false }: EnergyCalculatorP
               ))}
             </div>
             <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground">
-              PDRC coatings lose 20–30 % of initial solar reflectance within 3–5 years without cleaning.
+              Passive cooling coatings lose 20–30 % of initial solar reflectance within 3–5 years without cleaning.
               Affects the aging factor (α<sub>age</sub>) and the 10-year adjusted projection.
             </p>
 
@@ -838,7 +838,7 @@ export default function EnergyCalculator({ embedded = false }: EnergyCalculatorP
               {/* Methodology note */}
               <div className="rounded-xl border border-border bg-secondary/15 p-4 text-xs leading-relaxed text-muted-foreground">
                 <strong className="text-foreground">Methodology:</strong>{" "}
-                Field-calibrated lookup using PDRC cooling physics (Q<sub>net</sub> = (Δρ·I<sub>avg</sub> + ε·R<sub>base</sub>) × h × f<sub>field</sub> × α<sub>age</sub>),
+                Field-calibrated lookup using passive cooling physics (Q<sub>net</sub> = (Δρ·I<sub>avg</sub> + ε·R<sub>base</sub>) × h × f<sub>field</sub> × α<sub>age</sub>),
                 NASA POWER GHI, IEA 2023 grid factors, ASHRAE CDD, and building-type seasonal COP.
                 Central estimate reflects real-world field performance; ±35 % range covers typical
                 model uncertainty. For bankable or compliance-grade numbers, run EnergyPlus or the

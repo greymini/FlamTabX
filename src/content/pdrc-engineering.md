@@ -1,4 +1,4 @@
-# PDRC calculator: formulas and pipeline
+# Passive cooling calculator: formulas and pipeline
 
 > **For readers:** This article presents the **core equations and correction factors** behind the public lookup tool. It replaces a downloadable engineering dump. Everything here is meant to be read in context with the [methodology overview](/blog/energy-calculator) and the [live calculator](/tools/energy-savings).
 
@@ -6,7 +6,7 @@
 
 ## Net cooling power (conceptual balance)
 
-A high-performance PDRC roof reduces solar absorption and adds sky-facing radiative exchange. The physics balance is:
+A high-performance passive cooling roof reduces solar absorption and adds sky-facing radiative exchange. The physics balance is:
 
 $$
 Q_{\mathrm{cool}} = Q_{\mathrm{solar,reflected}} + Q_{\mathrm{radiative}} - Q_{\mathrm{convective}}
@@ -25,9 +25,9 @@ $$
 Where:
 - $\Delta\rho = \rho_{\mathrm{pdrc}} - \rho_{\mathrm{baseline}}$ — change in solar reflectance (baseline is dark / medium / light roof band)
 - $I_{\mathrm{avg}}$ — cooling-season–weighted average irradiance (W/m²), derived from annual GHI with a seasonal boost (see below)
-- $\varepsilon_{\mathrm{pdrc}}$ — longwave emittance of PDRC coating (reference: 0.95)
+- $\varepsilon_{\mathrm{pdrc}}$ — longwave emittance of the passive cooling coating (reference: 0.95)
 - $R_{\mathrm{base}} = 30\,\mathrm{W/m^2}$ — conservative field-representative incremental radiative benefit. Revised down from 45 W/m² (prior value) to align with published field study ranges of 20–50 W/m² in humid subtropical conditions; 40–70 W/m² in hot-dry. Source: Fan et al. 2022; Hossain et al. 2021; Tang et al. 2021.
-- $h \in [0.48,\,1.0]$ — **humidity factor**: folds in water vapour, clouds, and documented PDRC degradation in humid / tropical skies (unchanged from prior version)
+- $h \in [0.48,\,1.0]$ — **humidity factor**: folds in water vapour, clouds, and documented passive cooling degradation in humid / tropical skies (unchanged from prior version)
 - $f_{\mathrm{field}} \in [0.58,\,0.73]$ — **field attenuation factor** (new): accounts for the gap between lab-characterised and field-deployed net cooling power. See table below.
 - $\alpha_{\mathrm{age}} \in [0.70,\,0.95]$ — **soiling / aging factor** (new): accounts for solar reflectance degradation over time. Parameterised by maintenance regime. See table below.
 
@@ -247,14 +247,14 @@ No per-keystroke physics in the browser beyond those multiplications.
 
 ## Further reading
 
-- [PDRC methodology (narrative)](/blog/energy-calculator)
+- [Passive cooling methodology (narrative)](/blog/energy-calculator)
 - [Venture story: FlamTabX](/blog/flamtabx)
 - [Run the calculator](/tools/energy-savings)
 
 ### References
 
-1. Fan, S. et al. (2022). Field study of PDRC net cooling power. *Science.*
-2. Hossain, M.M. et al. (2021). Subtropical field performance of PDRC coatings.
+1. Fan, S. et al. (2022). Field study of passive daytime radiative cooling net cooling power. *Science.*
+2. Hossain, M.M. et al. (2021). Subtropical field performance of passive cooling coatings.
 3. Tang, H. et al. (2021). Real-world radiative cooling power measurements. *Applied Energy.*
 4. CRRC. *Determining the Energy Savings of a Cool Roof.* 2020 edition.
 5. LBNL. *Aged solar reflectance database.* 2023.

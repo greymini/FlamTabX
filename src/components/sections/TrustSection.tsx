@@ -39,7 +39,7 @@ const TrustSection = () => {
                 to="/tools/energy-savings"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
-                PDRC style energy calculator
+                passive cooling energy calculator
               </Link>
               . How it is built (data sources, lookup design, and limits) is summarized in the{" "}
               <Link
