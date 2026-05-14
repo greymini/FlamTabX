@@ -1,17 +1,17 @@
-# How we built the PDRC energy savings calculator
+# How we built the energy savings calculator
 
-> **Executive summary:** This tool estimates **annual kWh saved** and **CO₂ avoided** when a high-performance passive daytime radiative cooling (PDRC) roof replaces a darker baseline. It uses **field-calibrated physics**, **NASA POWER** solar data, **IEA 2023** grid factors, and **ASHRAE-style** cooling demand proxies. Results are presented as **conservative / central / optimistic ranges** to reflect the inherent uncertainty of simplified models. It runs **entirely in your browser** (no live API calls). **[Try the calculator →](/tools/energy-savings)**  
+> **Executive summary:** This tool estimates **annual kWh saved** and **CO₂ avoided** when a high-performance passive daytime radiative cooling roof replaces a darker baseline. It uses **field-calibrated physics**, **NASA POWER** solar data, **IEA 2023** grid factors, and **ASHRAE-style** cooling demand proxies. Results are presented as **conservative / central / optimistic ranges** to reflect the inherent uncertainty of simplified models. It runs **entirely in your browser** (no live API calls). **[Try the calculator →](/tools/energy-savings)**  
 > For **equations, symbols, and the formula pipeline**, see **[Formulas & pipeline →](/blog/pdrc-engineering)**.
 
 ---
 
-## What PDRC is (plain English)
+## What passive cooling is (plain English)
 
-A PDRC surface does two things at once:
+A passive cooling surface does two things at once:
 
-1. **Reflects sunlight** so less energy enters the roof as heat. Dark roofs absorb **~85–95 %** of solar radiation; advanced PDRC finishes push solar reflectance to ~0.95, dramatically cutting solar heat gain.
+1. **Reflects sunlight** so less energy enters the roof as heat. Dark roofs absorb **~85–95 %** of solar radiation; advanced passive cooling finishes push solar reflectance to ~0.95, dramatically cutting solar heat gain.
 
-2. **Radiates heat to the sky** through the **atmospheric window** (roughly **8–13 µm**), where the atmosphere is relatively transparent. High thermal emittance in this band lets the roof shed heat even when the air is warm — the key distinction between serious PDRC and a simple white-paint cool roof.
+2. **Radiates heat to the sky** through the **atmospheric window** (roughly **8–13 µm**), where the atmosphere is relatively transparent. High thermal emittance in this band lets the roof shed heat even when the air is warm — the key distinction between serious passive cooling and a simple white-paint cool roof.
 
 Net cooling power is often written as:
 
@@ -21,13 +21,13 @@ cooling ≈ (reflected solar) + (radiation to sky) − (convection / gains from 
 
 ### Real-world net cooling power: what the field data show
 
-Laboratory measurements of PDRC materials peak at **93–150 W/m²** under ideal clear-sky, low-humidity, clean-surface desert conditions. But deployed buildings are not lab environments. Published field studies consistently measure:
+Laboratory measurements of passive cooling materials peak at **93–150 W/m²** under ideal clear-sky, low-humidity, clean-surface desert conditions. But deployed buildings are not lab environments. Published field studies consistently measure:
 
 - **Hot-dry climates** (e.g., Arizona, Middle East): **40–70 W/m²** net cooling power
 - **Hot-humid and subtropical** (e.g., Florida, South China): **20–50 W/m²**
 - **Tropical / high-humidity** (e.g., Singapore, Mumbai): **15–40 W/m²**
 
-The two biggest real-world attenuators are **humidity** (water vapour blocks and re-emits the longwave radiation that PDRC relies on) and **soiling** (dust, biological growth, and air pollution degrade solar reflectance faster than lab aging tests predict). Our updated calculator explicitly models both.
+The two biggest real-world attenuators are **humidity** (water vapour blocks and re-emits the longwave radiation that passive cooling relies on) and **soiling** (dust, biological growth, and air pollution degrade solar reflectance faster than lab aging tests predict). Our updated calculator explicitly models both.
 
 ---
 
@@ -61,7 +61,7 @@ Implementation details and constants are in **[Formulas & pipeline](/blog/pdrc-e
 
 ## A note on the lab-to-field performance gap
 
-PDRC materials are characterised under **ideal conditions** — clear sky, low humidity, clean surface, no wind. Deployed buildings experience all of these in combination. Published field studies (Fan et al. 2022; Hossain et al. 2021; Tang et al. 2021) consistently find that the ratio of field-measured to lab-measured net cooling power is:
+Passive cooling materials are characterised under **ideal conditions** — clear sky, low humidity, clean surface, no wind. Deployed buildings experience all of these in combination. Published field studies (Fan et al. 2022; Hossain et al. 2021; Tang et al. 2021) consistently find that the ratio of field-measured to lab-measured net cooling power is:
 
 - **0.70–0.85** in hot-dry climates
 - **0.60–0.70** in hot-humid climates
@@ -77,7 +77,7 @@ The updated lookup tables incorporate a **field attenuation factor (f_field)** d
 2. **Building type + storey class** → seasonal COP, storey-adjusted roof share of cooling load (f_roof × storey factor).
 3. **Maintenance regime** → coating aging factor (α_age), which degrades over time without cleaning.
 4. **Conditioned area fraction** → HVAC electricity savings apply only to the air-conditioned portion of the roof.
-5. **Roof starting point** (dark / medium / light) → delta in solar absorption and PDRC radiative layer.
+5. **Roof starting point** (dark / medium / light) → delta in solar absorption and passive cooling radiative layer.
 6. **Multiply** per-m² annual **kWh** by **roof area** (m²).
 7. **Convert** kWh × grid EF → **metric tonnes CO₂e**.
 8. **Apply ±35 % uncertainty band** → conservative / central / optimistic range.
@@ -117,14 +117,14 @@ Stating limits in-product is part of credibility. For procurement-grade numbers,
 
 ## Customize for your coating (partners & R&D)
 
-If you are a **coating manufacturer** with lab-measured **solar reflectance**, **thermal emittance**, and **3-year aged reflectance** data, the same pipeline can regenerate lookup tables for your SKU instead of the reference PDRC band. Contact us with datasheet + target geographies.
+If you are a **coating manufacturer** with lab-measured **solar reflectance**, **thermal emittance**, and **3-year aged reflectance** data, the same pipeline can regenerate lookup tables for your SKU instead of the reference passive cooling band. Contact us with datasheet + target geographies.
 
 ---
 
 ## References (selected)
 
 1. Fan, S. et al. (2022). Thermal Cooling System using Passive Radiative Cooling. *Science.*
-2. Hossain, M.M. et al. (2021). Field performance of PDRC coatings under subtropical conditions.
+2. Hossain, M.M. et al. (2021). Field performance of passive cooling coatings under subtropical conditions.
 3. Tang, H. et al. (2021). Real-world net cooling power measurements for sub-ambient radiative cooling. *Applied Energy.*
 4. Cool Roof Rating Council (CRRC). *Determining the Energy Savings of a Cool Roof.* 2020 edition.
 5. Lawrence Berkeley National Laboratory. *Aged solar reflectance database.* 2023.
@@ -133,7 +133,7 @@ If you are a **coating manufacturer** with lab-measured **solar reflectance**, *
 8. PNNL Technical Report PNNL-24904 (2016). *Energy Savings Potential of Radiative Cooling Technologies.*
 9. npj Urban Sustainability (2024). *Building energy savings by green roofs and cool roofs in current and future climates.*
 
-Key PDRC, cool roof, and radiative cooling literature informed the humidity factors and field calibration constants; full citations are available on request for diligence.
+Key passive cooling, cool roof, and radiative cooling literature informed the humidity factors and field calibration constants; full citations are available on request for diligence.
 
 ---
 

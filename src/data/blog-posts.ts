@@ -11,7 +11,7 @@ export interface BlogPostMeta {
 export const blogPosts: BlogPostMeta[] = [
   {
     slug: "pdrc-engineering",
-    title: "PDRC calculator: formulas and pipeline",
+    title: "Passive cooling calculator: formulas and pipeline",
     description:
       "Key physics equations, humidity and heating corrections, and how kWh and CO₂ flow from roof area and climate, typeset for clarity.",
     publishedAt: "2025-03-20",
@@ -20,7 +20,7 @@ export const blogPosts: BlogPostMeta[] = [
   },
   {
     slug: "energy-calculator",
-    title: "How we built the PDRC energy savings calculator",
+    title: "How we built the energy savings calculator",
     description:
       "Executive summary of the lookup architecture, NASA POWER and IEA data, limitations, and how to interpret results.",
     publishedAt: "2025-03-18",

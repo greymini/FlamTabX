@@ -77,7 +77,7 @@ const Index = () => {
         {/* Section 08 - Trust & Research */}
         <TrustSection />
 
-        {/* Section 08b - PDRC calculator (featured) */}
+        {/* Section 08b - Energy savings calculator (featured) */}
         <EnergyCalculatorSection />
 
         {/* Section 09 - Who It's For */}

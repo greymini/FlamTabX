@@ -116,7 +116,7 @@ export function BlogArticle({
   markdown,
   className,
   tocFooterLinks = [
-    { to: "/tools/energy-savings", label: "PDRC energy calculator →" },
+    { to: "/tools/energy-savings", label: "Energy calculator →" },
   ],
 }: BlogArticleProps) {
   const toc = useMemo(() => buildToc(markdown), [markdown]);

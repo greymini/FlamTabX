@@ -13,7 +13,7 @@ const FlamTabXBlog = () => {
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Why FlamTabX: heat and moisture problem, product thesis, pilots, GTM, team, impact, and IP, plus links to the PDRC calculator and methodology article."
+      "Why FlamTabX: heat and moisture problem, product thesis, pilots, GTM, team, impact, and IP, plus links to the energy savings calculator and methodology article."
     );
     return () => {
       document.title = prev;
@@ -41,7 +41,7 @@ const FlamTabXBlog = () => {
                 to="/tools/energy-savings"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
-                PDRC calculator
+                energy savings calculator
               </Link>{" "}
               and the{" "}
               <Link
@@ -58,7 +58,7 @@ const FlamTabXBlog = () => {
           markdown={pitchMarkdown}
           tocFooterLinks={[
             { to: "/blog", label: "All posts →" },
-            { to: "/tools/energy-savings", label: "PDRC energy calculator →" },
+            { to: "/tools/energy-savings", label: "Energy calculator →" },
             { to: "/blog/energy-calculator", label: "Calculator methodology →" },
             { to: "/blog/pdrc-engineering", label: "Formulas & pipeline →" },
           ]}

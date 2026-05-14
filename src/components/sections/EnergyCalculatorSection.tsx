@@ -27,7 +27,7 @@ const EnergyCalculatorSection = () => {
             Interactive tool
           </p>
           <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-            PDRC energy savings calculator
+            Energy savings calculator
           </h2>
           <p className="mt-4 text-lg text-muted-foreground md:text-xl">
             Pick a city, roof area, and building type to see estimated annual kWh

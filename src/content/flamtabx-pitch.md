@@ -95,7 +95,7 @@ FlamTabX is a **climate adaptive, bio based coating** for roofs and walls that a
 
 **What we track**
 
-- **Impact:** kWh avoided and CO₂ avoided per treated building (see also our [PDRC style calculator](/tools/energy-savings) and [methodology write-up](/blog/energy-calculator)).
+- **Impact:** kWh avoided and CO₂ avoided per treated building (see also our [passive cooling calculator](/tools/energy-savings) and [methodology write-up](/blog/energy-calculator)).
 - **Product:** Δ surface / indoor temperature vs. controls, durability in monsoon cycles.
 - **Business:** pilot count, paid conversion, repeat orders.
 
@@ -140,4 +140,4 @@ FlamTabX is a **climate adaptive, bio based coating** for roofs and walls that a
 
 ---
 
-*For interactive, geography-specific **passive cooling savings** (kWh and CO₂), use the [PDRC energy calculator](/tools/energy-savings). For how those numbers are built, read the [calculator research article](/blog/energy-calculator). For equations and the full formula chain, see [Formulas & pipeline](/blog/pdrc-engineering). [All blog posts →](/blog)*
+*For interactive, geography-specific **passive cooling savings** (kWh and CO₂), use the [energy savings calculator](/tools/energy-savings). For how those numbers are built, read the [calculator research article](/blog/energy-calculator). For equations and the full formula chain, see [Formulas & pipeline](/blog/pdrc-engineering). [All blog posts →](/blog)*

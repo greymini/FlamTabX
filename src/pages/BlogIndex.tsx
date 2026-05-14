@@ -13,7 +13,7 @@ const BlogIndex = () => {
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Articles on the FlamTabX venture, passive cooling methodology, and PDRC calculator engineering."
+      "Articles on the FlamTabX venture, passive cooling methodology, and energy calculator engineering."
     );
     return () => {
       document.title = prev;
@@ -37,7 +37,7 @@ const BlogIndex = () => {
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
               Stories, methodology, and technical depth on climate adaptive
-              surfaces and the PDRC savings tool.
+              surfaces and the energy savings tool.
             </p>
           </div>
         </header>

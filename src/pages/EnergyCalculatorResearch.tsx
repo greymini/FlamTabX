@@ -8,12 +8,12 @@ const EnergyCalculatorResearch = () => {
   useEffect(() => {
     const prev = document.title;
     document.title =
-      "FlamTabX | PDRC calculator methodology: NASA POWER, IEA, lookup pipeline";
+      "FlamTabX | Energy calculator methodology: NASA POWER, IEA, lookup pipeline";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "How the passive cooling calculator works: PDRC physics, precalculated lookups, NASA POWER GHI, IEA grid factors, and limitations. Link to formulas deep dive."
+      "How the passive cooling calculator works: passive cooling physics, precalculated lookups, NASA POWER GHI, IEA grid factors, and limitations. Link to formulas deep dive."
     );
     return () => {
       document.title = prev;
@@ -31,7 +31,7 @@ const EnergyCalculatorResearch = () => {
               Methodology
             </p>
             <h1 className="font-display mt-2 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-              PDRC energy calculator
+              Energy savings calculator
             </h1>
             <p className="mt-2 max-w-2xl text-muted-foreground">
               A readable summary of the lookup pipeline and data sources. Run
